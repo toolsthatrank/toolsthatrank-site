@@ -20,7 +20,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
   var KEY = 'mr_consent_v1', TTL = 34164000; // seconds, 13 months: cookie_expires and the re-ask window
   var REGION = ('AT BE BG HR CY CZ DK EE FI FR DE GR IE IT LV LT LU MT NL PL PT RO SK SI ES SE ' +
     'IS LI NO GB CH AX GF GP MQ RE YT MF').split(' ');
-  var VALUE = { weekly: 9.99, lifetime: 199 };
+  var VALUE = {}; // no subscription plans are sold on this site
   /* ToolsThatRank Stripe payment links: buy.stripe.com slug -> tier (the link's metadata.tier) and its live USD price,
      read from /v1/payment_links/<id>/line_items on 2026-09-29. Update the price here if Stripe's changes. */
   var TTR = {
@@ -345,8 +345,8 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     var offer = a.tagName === 'A' && a.origin === location.origin && a.hash !== '#main' &&
       (/^\/pricing(\/|$)/.test(a.pathname) || ((a.pathname === '/' || a.pathname === '/index.html') && /^#(pricing|pipeline|build|audit|plans)$/.test(a.hash)));
     var agencyCta = referral || gumroad || offer || STRIPE.test(href) || a.hasAttribute('data-mr-checkout');
-    if (agencyCta) track('cta_click', {
-      cta_target: referral ? 'toolsthatrank' : gumroad ? a.pathname.slice(3) : STRIPE.test(href) ? 'stripe' : a.hash.slice(1) || 'pricing',
+    if (agencyCta || a.hasAttribute('data-cta')) track('cta_click', {
+      cta_target: referral ? 'toolsthatrank' : gumroad ? a.pathname.slice(3) : STRIPE.test(href) ? 'stripe' : agencyCta ? (a.hash.slice(1) || 'pricing') : /paypal|buymeacoffee|sponsors/.test(href) ? 'tip' : 'other',
       placement: placement(a), page_path: location.pathname, cta_id: clip(a.getAttribute('data-cta') || ''),
       link_text: clip(a.textContent), link_url: clip(clean(href))
     });

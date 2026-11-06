@@ -41,13 +41,13 @@ a{color:var(--acc);text-decoration:none;border-bottom:1px solid rgba(29,107,79,.
 a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 button{font-family:inherit;cursor:pointer}
 button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:3px}
-.cmd button:focus-visible{outline:2px solid var(--acc-br);outline-offset:-3px}
+.cmd button:focus-visible{outline:2px solid var(--acc);outline-offset:-3px}
 ::selection{background:#D8E7DE}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 img{max-width:100%;height:auto}
 
 .frame{width:100%;max-width:1180px;margin:0 auto;container-type:inline-size;background:var(--paper);
-  color:var(--ink);font:400 16px/1.6 var(--sans);border-left:1px solid var(--line2);border-right:1px solid var(--line2);min-height:100svh}
+  color:var(--ink);font:400 1rem/1.6 var(--sans);border-left:1px solid var(--line2);border-right:1px solid var(--line2);min-height:100svh}
 .in{max-width:1080px;margin:0 auto;padding-left:20px;padding-right:20px}
 .sec{padding-top:clamp(44px,6cqw,88px);padding-bottom:clamp(44px,6cqw,88px)}
 .bt{border-top:1px solid var(--line)} .bb{border-bottom:1px solid var(--line)}
@@ -59,68 +59,68 @@ img{max-width:100%;height:auto}
 header{position:sticky;top:0;z-index:40;background:rgba(246,245,241,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header .in{padding-top:12px;padding-bottom:12px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px}
 .brand{display:flex;align-items:baseline;gap:7px;margin-right:auto;border:0}
-.brand .g{color:var(--acc);font-size:16px;line-height:1}
-.brand .n{font-size:16px;font-weight:600;letter-spacing:-.025em;color:var(--ink)}
-nav.top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-family:var(--mono);font-size:12.5px}
+.brand .g{color:var(--acc);font-size:1rem;line-height:1}
+.brand .n{font-size:1rem;font-weight:600;letter-spacing:-.025em;color:var(--ink)}
+nav.top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-family:var(--mono);font-size:0.7812rem}
 nav.top a{color:var(--mut);border-bottom:1px solid var(--line2);white-space:nowrap;padding:2px 0}
 nav.top a:hover{color:var(--ink)}
 
-h1{margin:0;font-size:clamp(34px,6.2cqw,66px);line-height:1.02;letter-spacing:-.038em;font-weight:600;max-width:16ch;text-wrap:balance}
-.lede{margin:clamp(18px,2.4cqw,26px) 0 0;font-size:clamp(16.5px,1.7cqw,20px);line-height:1.5;color:var(--body);max-width:50ch;text-wrap:pretty}
-h2{margin:0;font-size:clamp(24px,3.2cqw,36px);font-weight:600;letter-spacing:-.028em;line-height:1.1}
-h3{margin:0;font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
-.sub{margin:16px 0 0;font-size:16px;line-height:1.6;color:var(--mut);max-width:58ch}
-.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
-.hline{margin:16px 0 0;font-size:14px;line-height:1.6;color:var(--mut);max-width:60ch}
+h1{margin:0;font-size:clamp(2.125rem,6.2cqw,4.125rem);line-height:1.02;letter-spacing:-.038em;font-weight:600;max-width:16ch;text-wrap:balance}
+.lede{margin:clamp(18px,2.4cqw,26px) 0 0;font-size:clamp(1.0312rem,1.7cqw,1.25rem);line-height:1.5;color:var(--body);max-width:50ch;text-wrap:pretty}
+h2{margin:0;font-size:clamp(1.5rem,3.2cqw,2.25rem);font-weight:600;letter-spacing:-.028em;line-height:1.1}
+h3{margin:0;font-size:1.0625rem;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.sub{margin:16px 0 0;font-size:1rem;line-height:1.6;color:var(--mut);max-width:58ch}
+.kicker{font-family:var(--mono);font-size:0.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.hline{margin:16px 0 0;font-size:0.875rem;line-height:1.6;color:var(--mut);max-width:60ch}
 
 .grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .g-stat{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
 .cell{background:var(--white);padding:clamp(18px,2.4cqw,26px) 18px}
-.big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(26px,3.4cqw,38px);font-weight:600;letter-spacing:-.03em;line-height:1}
-.cap{margin-top:9px;font-size:12.5px;line-height:1.35;color:var(--mut)}
-.cell p{margin:8px 0 0;font-size:14px;line-height:1.55;color:var(--mut);text-wrap:pretty}
-.num{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--faint)}
+.big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(1.625rem,3.4cqw,2.375rem);font-weight:600;letter-spacing:-.03em;line-height:1}
+.cap{margin-top:9px;font-size:0.7812rem;line-height:1.35;color:var(--mut)}
+.cell p{margin:8px 0 0;font-size:0.875rem;line-height:1.55;color:var(--mut);text-wrap:pretty}
+.num{font-family:var(--mono);font-size:0.75rem;letter-spacing:.1em;color:var(--faint)}
 
 .notes{margin-top:clamp(22px,3cqw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
 .nt{background:var(--white);border:1px solid var(--line);border-radius:3px;padding:clamp(18px,2.4cqw,26px)}
-.nt p{margin:8px 0 0;font-size:14px;line-height:1.55;color:var(--mut);text-wrap:pretty}
+.nt p{margin:8px 0 0;font-size:0.875rem;line-height:1.55;color:var(--mut);text-wrap:pretty}
 
 .body{margin-top:clamp(26px,3.4cqw,40px)}
-.body p{margin:14px 0 0;font-size:15px;line-height:1.65;color:var(--body);max-width:66ch;text-wrap:pretty}
+.body p{margin:14px 0 0;font-size:0.9375rem;line-height:1.65;color:var(--body);max-width:66ch;text-wrap:pretty}
 
 .disc{margin-top:clamp(26px,3.4cqw,40px);background:var(--white);border:1px solid var(--line);border-radius:3px;padding:clamp(18px,2.4cqw,26px)}
-.disc p{margin:8px 0 0;font-size:13.5px;line-height:1.55;color:var(--mut);max-width:64ch}
+.disc p{margin:8px 0 0;font-size:0.8438rem;line-height:1.55;color:var(--mut);max-width:64ch}
 .disc p:first-child{margin-top:0}
 
-.srcs{margin-top:clamp(22px,3cqw,32px);font-family:var(--mono);font-size:12.5px;line-height:2;color:var(--faint2)}
+.srcs{margin-top:clamp(22px,3cqw,32px);font-family:var(--mono);font-size:0.7812rem;line-height:2;color:var(--faint2)}
 
-code.k{font-family:var(--mono);font-size:14px;background:var(--line4);border:1px solid var(--line);border-radius:3px;padding:1px 5px}
+code.k{font-family:var(--mono);font-size:0.875rem;background:var(--line4);border:1px solid var(--line);border-radius:3px;padding:1px 5px}
 
 .tool{margin-top:clamp(22px,3cqw,32px);background:var(--white);border:1px solid var(--line);border-radius:3px;padding:clamp(18px,2.4cqw,26px)}
 .tool .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px}
-.tool label{display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint2)}
-.tool input{font:500 15px/1.3 var(--mono);color:var(--ink);background:var(--paper);border:1px solid var(--line2);border-radius:3px;padding:11px 12px;min-height:48px}
+.tool label{display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:0.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint2)}
+.tool input{font:500 0.9375rem/1.3 var(--mono);color:var(--ink);background:var(--paper);border:1px solid var(--line2);border-radius:3px;padding:11px 12px;min-height:48px}
 .tool input:focus{border-color:var(--acc);background:var(--white)}
-.tool select{font:500 15px/1.3 var(--mono);color:var(--ink);background:var(--paper);border:1px solid var(--line2);border-radius:3px;padding:11px 12px;min-height:48px}
+.tool select{font:500 0.9375rem/1.3 var(--mono);color:var(--ink);background:var(--paper);border:1px solid var(--line2);border-radius:3px;padding:11px 12px;min-height:48px}
 .tool .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-top:14px}
 .btn-p,.btn-s{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:3px;
-  font-size:15px;font-weight:500;border-bottom:0}
+  font-size:0.9375rem;font-weight:500;border-bottom:0}
 .btn-p{background:var(--acc);color:#F6F5F1;border:1px solid var(--acc)}
 .btn-p:hover{background:#175840;color:#fff;border-color:#175840}
 .btn-s{background:transparent;color:var(--ink);border:1px solid var(--line2)}
 .btn-s:hover{border-color:var(--ink);color:var(--ink)}
-.toolerr{margin:12px 0 0;font-size:14px;line-height:1.5;color:#8A2E1B;background:#F7E8E4;border:1px solid #E5C4BF;border-radius:3px;padding:10px 12px}
-.toolout{margin-top:14px;border-top:1px solid var(--line3);padding-top:14px;font-size:15px;line-height:1.7;color:var(--body)}
+.toolerr{margin:12px 0 0;font-size:0.875rem;line-height:1.5;color:#8A2E1B;background:#F7E8E4;border:1px solid #E5C4BF;border-radius:3px;padding:10px 12px}
+.toolout{margin-top:14px;border-top:1px solid var(--line3);padding-top:14px;font-size:0.9375rem;line-height:1.7;color:var(--body)}
 .toolout.empty{color:var(--faint)}
 .toolout p{margin:6px 0 0}
 .toolout .tl{margin:8px 0 0}
 .toolout b.hi{font-family:var(--mono);font-weight:600;color:var(--ink)}
-.crumb{margin:0;font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+.crumb{margin:0;font-family:var(--mono);font-size:0.7812rem;color:var(--faint)}
 .crumb a{color:var(--mut)}
 
-table.data{width:100%;border-collapse:collapse;margin-top:clamp(18px,2.4cqw,26px);background:var(--white);border:1px solid var(--line);border-radius:3px;overflow:hidden;font-size:14px}
+table.data{width:100%;border-collapse:collapse;margin-top:clamp(18px,2.4cqw,26px);background:var(--white);border:1px solid var(--line);border-radius:3px;overflow:hidden;font-size:0.875rem}
 table.data th,table.data td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line3)}
-table.data thead th{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint2);background:var(--paper)}
+table.data thead th{font-family:var(--mono);font-size:0.7812rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint2);background:var(--paper)}
 table.data td.m{font-family:var(--mono);font-variant-numeric:tabular-nums}
 table.data tr:last-child td{border-bottom:0}
 
@@ -128,22 +128,22 @@ footer{margin-top:clamp(48px,6cqw,96px);border-top:1px solid var(--line);backgro
 footer .in{padding-top:clamp(28px,3.5cqw,44px);padding-bottom:clamp(28px,3.5cqw,44px)}
 .fr{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-start}
 .fr .l{flex:1 1 220px;min-width:0}
-.fr p{margin:10px 0 0;font-size:12.5px;line-height:1.6;color:var(--faint2);max-width:42ch}
-footer nav{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:13px}
+.fr p{margin:10px 0 0;font-size:0.7812rem;line-height:1.6;color:var(--faint2);max-width:42ch}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:0.8125rem}
 footer nav a{color:var(--mut);border-bottom:1px solid var(--line2)}
-.copy{margin-top:24px;padding-top:16px;border-top:1px solid var(--line3);font-family:var(--mono);font-size:12px;color:var(--faint)}
+.copy{margin-top:24px;padding-top:16px;border-top:1px solid var(--line3);font-family:var(--mono);font-size:0.75rem;color:var(--faint)}
 @media (pointer:coarse){nav.top a,footer nav a,.card .nm a{min-height:48px;display:inline-flex;align-items:center}summary{min-height:56px;align-items:center}}
 html{overflow-x:hidden}
-@media (max-width:520px){nav.top a:not([href^="#"]){display:none}nav.top{gap:4px 12px;font-size:12px}}
-.sec h1{font-size:clamp(29px,4.2cqw,46px);line-height:1.08;letter-spacing:-.032em;
+@media (max-width:520px){nav.top a:not([href^="#"]){display:none}nav.top{gap:4px 12px;font-size:0.75rem}}
+.sec h1{font-size:clamp(1.8125rem,4.2cqw,2.875rem);line-height:1.08;letter-spacing:-.032em;
   max-width:24ch;margin:10px 0 0}
 @media print{header,#mrc-banner,.mrc{display:none!important}}
 @media (max-width:640px){
-  table.data thead th{font-size:13px}
-  p.kicker{font-size:12px}
-  .tool label{font-size:12px}
-  .crumb,.crumb a{font-size:12px}
-  footer small{font-size:12px}
+  table.data thead th{font-size:0.8125rem}
+  p.kicker{font-size:0.75rem}
+  .tool label{font-size:0.75rem}
+  .crumb,.crumb a{font-size:0.75rem}
+  footer small{font-size:0.75rem}
 }
 </style>
 <script type="application/ld+json">
@@ -198,27 +198,28 @@ html{overflow-x:hidden}
 <style id="scta-css">
 /* Support CTA (tips). Outline buttons only: the filled green button stays on the paid pipeline. */
 [data-support-cta][hidden]{display:none!important}
-.scta{background:var(--white,#fff);border:1px solid var(--line,#E2DFD5);border-radius:4px;padding:16px 18px;margin-top:18px;color:var(--ink,#16150F);font:400 15px/1.55 var(--sans,'IBM Plex Sans',system-ui,sans-serif);text-align:left}
+.scta{background:var(--white,#fff);border:1px solid var(--line,#E2DFD5);border-radius:4px;padding:16px 18px;margin-top:18px;color:var(--ink,#16150F);font:400 0.9375rem/1.55 var(--sans,'IBM Plex Sans',system-ui,sans-serif);text-align:left}
 .tool .scta,.wht .scta{background:var(--paper,#F6F5F1)}
 .scta-top{display:flex;align-items:center;gap:12px}
 .scta-top img{border-radius:50%;flex:none}
-.scta-h{font-size:15px;font-weight:600;margin:0;letter-spacing:-.01em}
-.scta p{margin:6px 0 0;font-size:14px;line-height:1.55;color:var(--mut,#6A6860);max-width:64ch}
+.scta-h{font-size:0.9375rem;font-weight:600;margin:0;letter-spacing:-.01em}
+.scta p{margin:6px 0 0;font-size:0.875rem;line-height:1.55;color:var(--mut,#6A6860);max-width:64ch}
 .scta-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.scta-b{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--acc,#1D6B4F);color:var(--acc,#1D6B4F);background:transparent;border-radius:4px;padding:7px 12px;font-size:13px;text-decoration:none}
+.scta-b{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--acc,#1D6B4F);color:var(--acc,#1D6B4F);background:transparent;border-radius:4px;padding:7px 12px;font-size:0.8125rem;text-decoration:none}
 .scta-b:hover{background:rgba(29,107,79,.08)}
 .scta-b small{font-weight:400;color:inherit;opacity:.75}
 .scta-b.alt{border-color:var(--line,#E2DFD5);color:var(--ink,#16150F)}
 .scta-b.alt:hover{background:rgba(0,0,0,.04)}
 .scta-b.quiet{border-color:var(--line,#E2DFD5);color:var(--mut,#6A6860)}
 .scta-b.quiet:hover{background:rgba(0,0,0,.04);color:var(--ink,#16150F)}
-.scta-why{font-size:12px;color:var(--mut,#6A6860);align-self:center}
+.scta-why{font-size:0.75rem;color:var(--mut,#6A6860);align-self:center}
 .scta a:focus-visible{outline:2px solid var(--acc,#1D6B4F);outline-offset:2px;border-radius:3px}
 .scta-foot{max-width:1080px;margin:clamp(40px,5cqw,72px) auto 0;padding:0 20px}
 .scta-foot .scta{max-width:760px;margin:0}
-@media (max-width:640px){.scta-foot{padding:0 14px}footer small,footer .support,footer .support a,.srcs small,a.scta-b small,.scta-foot a.scta-b small{font-size:12px}}
+@media (max-width:640px){.scta-foot{padding:0 14px}footer small,footer .support,footer .support a,.srcs small,a.scta-b small,.scta-foot a.scta-b small{font-size:0.75rem}}
 </style>
-<style id="hcta-css">.hcta{display:inline-flex;align-items:center;min-height:48px;padding:0 14px;margin-left:auto;border-radius:3px;border:1px solid var(--acc,#1D6B4F);color:var(--acc,#1D6B4F);background:transparent;font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap}.hcta:hover{background:var(--acc,#1D6B4F);color:#F6F5F1}nav.top a{min-height:48px;display:inline-flex;align-items:center}.btn-s{border-color:#8C887C}@media (max-width:520px){header .in .hcta{order:2}header .in nav.top{order:3;width:100%}}@media (min-width:521px){header .in:has(nav.top a[href="/pricing/"]) .hcta{display:none}}</style>
+<style id="hcta-css">.hcol,.hero>*,.in>*{min-width:0}a[href^="mailto:"]{overflow-wrap:anywhere}.wrapx{max-width:100%;overflow-x:auto}.hcta{display:inline-flex;align-items:center;min-height:48px;padding:0 14px;margin-left:auto;border-radius:3px;border:1px solid var(--acc,#1D6B4F);color:var(--acc,#1D6B4F);background:transparent;font-size:0.875rem;font-weight:500;text-decoration:none;white-space:nowrap}.hcta:hover{background:var(--acc,#1D6B4F);color:#F6F5F1}nav.top a{min-height:48px;display:inline-flex;align-items:center}.btn-s{border-color:#8C887C}@media (max-width:520px){header .in .hcta{order:2}header .in nav.top{order:3;width:100%}}header .in:has(.hcta) nav.top a[href="/pricing/"]{display:none}#home_hero_tiers,#pricing_hero_faq{display:inline-flex;align-items:center;min-height:48px}</style>
+<style id="r2-fit">@media (max-width:760px){table{display:block;overflow-x:auto;max-width:100%;min-width:0!important}pre{max-width:100%;overflow-x:auto}main a,main code,footer a,.prose,p{overflow-wrap:anywhere}.scta-btns,.scta-b{flex-wrap:wrap}.scta a.scta-b,a.scta-b,.scta-b a{white-space:normal;height:auto;min-height:48px}[class*="stat"]>*,.grid>*{min-width:0}}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -246,8 +247,8 @@ html{overflow-x:hidden}
   <p class="crumb"><a href="/">ToolsThatRank</a> / bulk data export</p>
   <p class="kicker">Calculator from Google's published prices</p>
   <h1>Search Console BigQuery export cost calculator</h1>
-  <p class="qas" style="margin:16px 0 0;font-size:16px;line-height:1.6;color:var(--body);max-width:62ch">The bulk data export itself is free. Google states there are no costs associated with Search Console to export the data. What you pay for is the BigQuery side. In the US and EU multi-regions, on-demand queries cost 6.25 dollars per TiB processed with the first 1 TiB per month free, and you pay for active logical storage at 0.02 dollars per GiB per month (0.01 dollars for long-term logical storage, after 90 days without a change) with the first 10 GiB free (prices fetched 2026-10-29). The 10 GiB free tier applies to active and long-term logical storage. Estimate both from those published prices. The free tiers apply per billing account, not per dataset or per table, and all other BigQuery use in that account shares them.</p>
-  <p class="stamp" style="margin:6px 0 0;font-size:13px;color:var(--faint)">Updated 2026-10-29 &middot; prices fetched 2026-10-29</p>
+  <p class="qas" style="margin:16px 0 0;font-size:1rem;line-height:1.6;color:var(--body);max-width:62ch">The bulk data export itself is free. Google states there are no costs associated with Search Console to export the data. What you pay for is the BigQuery side. In the US and EU multi-regions, on-demand queries cost 6.25 dollars per TiB processed with the first 1 TiB per month free, and you pay for active logical storage at 0.02 dollars per GiB per month (0.01 dollars for long-term logical storage, after 90 days without a change) with the first 10 GiB free (prices fetched 2026-10-29). The 10 GiB free tier applies to active and long-term logical storage. Estimate both from those published prices. The free tiers apply per billing account, not per dataset or per table, and all other BigQuery use in that account shares them.</p>
+  <p class="stamp" style="margin:6px 0 0;font-size:0.8125rem;color:var(--faint)">Updated 2026-10-29 &middot; prices fetched 2026-10-29</p>
   <p class="lede">Enter the GiB of new rows the export appends each day, how many days of daily
     drops you keep, the dataset location, and how your queries use the data. The calculator
     splits the dataset at the 90 day mark. Partitions younger than 90 days bill at the active
@@ -336,7 +337,7 @@ html{overflow-x:hidden}
     2026-10-29, and may change; the pricing page linked below is the source of record. Physical storage
     billing has other prices, and this page covers logical billing only.</p>
     <h2 style="margin-top:clamp(26px,3.4cqw,40px)">Setup check list from Google's rules</h2>
-    <ul style="margin:14px 0 0;padding-left:20px;font-size:15px;line-height:1.65;color:var(--body);max-width:66ch">
+    <ul style="margin:14px 0 0;padding-left:20px;font-size:0.9375rem;line-height:1.65;color:var(--body);max-width:66ch">
       <li>Search Console charges nothing for the export. BigQuery bills the storage and the queries.</li>
       <li>The Cloud project must have a valid billing configuration, otherwise the write will fail.</li>
       <li>Tables and partitions are retained forever by default, unless your Cloud project or organization sets a default. To limit storage, set a partition expiration. Make sure the expiration is 14 days or longer.</li>
@@ -344,7 +345,7 @@ html{overflow-x:hidden}
       <li>Do not change the table schema. Google states that schema changes will cause the export to fail.</li>
     </ul>
     <p>Run this query to see the logical bytes of your own dataset by storage tier. Replace PROJECT_ID with your project ID. searchconsole is the default dataset name; replace it if you chose another name. A partition moves from ACTIVE to LONG_TERM after 90 days without a change.</p>
-    <pre style="margin:14px 0 0;overflow-x:auto;font:14px/1.5 var(--mono);background:var(--line4);border:1px solid var(--line);border-radius:3px;padding:12px">SELECT storage_tier, SUM(total_logical_bytes) AS logical_bytes
+    <pre style="margin:14px 0 0;overflow-x:auto;font:0.875rem/1.5 var(--mono);background:var(--line4);border:1px solid var(--line);border-radius:3px;padding:12px">SELECT storage_tier, SUM(total_logical_bytes) AS logical_bytes
 FROM `PROJECT_ID.searchconsole.INFORMATION_SCHEMA.PARTITIONS`
 GROUP BY storage_tier;</pre>
     <p>Google's efficiency post names several ways to control the bill. Among them, set a
@@ -386,18 +387,18 @@ GROUP BY storage_tier;</pre>
   <p>Michael</p>
 </section>
 </main>
-<section class="scta-foot" data-support-cta="footer" aria-labelledby="scta-fh"><div class="scta"><div class="scta-top"><picture><source srcset="/assets/michael-128.webp" type="image/webp"><img src="/assets/michael-128.jpg" width="44" height="44" loading="lazy" decoding="async" alt="Michael Lip"></picture><h2 class="scta-h" id="scta-fh">Made by Michael, one person and a lot of coffee.</h2></div><p>If ToolsThatRank has helped you, you can buy me a coffee. It honestly makes my day, and I read every note that comes with one.</p><div class="scta-btns"><a class="scta-b" data-rail="paypal" href="https://paypal.me/najzzz/5USD" target="_blank" rel="noopener" data-cta="search_console_bigquery_export_cost_tip_paypal_1" id="search_console_bigquery_export_cost_tip_paypal_1"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg><span>Buy me a coffee &middot; $5 <small>via PayPal</small></span></a><a class="scta-b alt" data-rail="bmc" href="https://buymeacoffee.com/michaellip" target="_blank" rel="noopener" data-cta="search_console_bigquery_export_cost_tip_bmc_2" id="search_console_bigquery_export_cost_tip_bmc_2">Card, any amount or monthly</a><a class="scta-b quiet" data-rail="github" href="https://github.com/sponsors/theluckystrike" target="_blank" rel="noopener" data-cta="search_console_bigquery_export_cost_tip_sponsors_3" id="search_console_bigquery_export_cost_tip_sponsors_3"><span>Sponsor on GitHub <small>monthly or one-time</small></span></a><a class="scta-why" href="/support/">Why I ask</a></div></div></section>
+<section class="scta-foot" data-support-cta="footer" aria-labelledby="scta-fh"><div class="scta"><div class="scta-top"><picture><source srcset="/assets/michael-128.webp" type="image/webp"><img src="/assets/michael-128.jpg" width="44" height="44" loading="lazy" decoding="async" alt="Michael Lip"></picture><h2 class="scta-h" id="scta-fh">Made by Michael, one person and a lot of coffee.</h2></div><p>If ToolsThatRank has helped you, you can buy me a coffee. It honestly makes my day, and I read every note that comes with one.</p><div class="scta-btns"><a class="scta-b" data-rail="paypal" href="https://paypal.me/najzzz/5USD" target="_blank" rel="noopener" data-cta="search_console_bigquery_export_cost_tip_paypal_1" id="search_console_bigquery_export_cost_tip_paypal_1"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg><span>Buy me a coffee &middot; $5 <small>via PayPal</small></span></a><a class="scta-b alt" data-rail="bmc" href="https://buymeacoffee.com/michaellip" target="_blank" rel="noopener" data-cta="search_console_bigquery_export_cost_tip_bmc_2" id="search_console_bigquery_export_cost_tip_bmc_2">Card, any amount or monthly</a><a class="scta-b quiet" data-rail="github" href="https://github.com/sponsors/theluckystrike" target="_blank" rel="noopener" data-cta="search_console_bigquery_export_cost_tip_sponsors_3" id="search_console_bigquery_export_cost_tip_sponsors_3"><span>Sponsor on GitHub <small>monthly or one-time</small></span></a><a class="scta-why" href="/support/" data-cta="search_console_bigquery_export_cost_support_1" id="search_console_bigquery_export_cost_support_1">Why I ask</a></div></div></section>
 <footer>
   <div class="in">
     <div class="fr">
       <div class="l">
         <div style="display:flex;align-items:baseline;gap:7px">
-          <span style="color:var(--acc);font-size:14px" aria-hidden="true">&#9672;</span>
-          <span style="font-size:14px;font-weight:600;letter-spacing:-.02em">ToolsThatRank</span>
+          <span style="color:var(--acc);font-size:0.875rem" aria-hidden="true">&#9672;</span>
+          <span style="font-size:0.875rem;font-weight:600;letter-spacing:-.02em">ToolsThatRank</span>
         </div>
         <p>Prices on this page are quoted from Google's documentation. The calculator
           recomputes each result in code.</p>
-        <p style="margin-top:8px">Support and refunds at <a href="mailto:support@toolsthatrank.com">support@toolsthatrank.com</a></p>
+        <p style="margin-top:8px">Support and refunds at <a href="mailto:support@toolsthatrank.com" data-cta="search_console_bigquery_export_cost_ttr_link_2" id="search_console_bigquery_export_cost_ttr_link_2">support@toolsthatrank.com</a></p>
       </div>
       <nav aria-label="Footer">
         <a href="/pricing/" data-cta="search_console_bigquery_export_cost_footer_pricing" id="search_console_bigquery_export_cost_footer_pricing">pricing, $99 once</a>
@@ -408,9 +409,9 @@ GROUP BY storage_tier;</pre>
         <a href="/privacy/">privacy</a>
         <a href="/privacy/#analytics" data-mr-consent-open>cookie settings</a>
         <a href="/terms/">terms</a>
-        <a href="mailto:support@toolsthatrank.com">support</a>
+        <a href="mailto:support@toolsthatrank.com" data-cta="search_console_bigquery_export_cost_ttr_link_3" id="search_console_bigquery_export_cost_ttr_link_3">support</a>
         <a href="https://github.com/theluckystrike" target="_blank" rel="noopener">github</a>
-      <a href="/support/">why I ask for tips</a>
+      <a href="/support/" data-cta="search_console_bigquery_export_cost_support_4" id="search_console_bigquery_export_cost_support_4">why I ask for tips</a>
 </nav>
     </div>
     <div class="copy">&copy; 2026 toolsthatrank.com &middot; measured, not asserted</div>

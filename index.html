@@ -47,13 +47,13 @@ a{color:var(--acc);text-decoration:none;border-bottom:1px solid rgba(29,107,79,.
 a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 button{font-family:inherit;cursor:pointer}
 button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:3px}
-.cmd button:focus-visible{outline:2px solid var(--acc-br);outline-offset:-3px}
+.cmd button:focus-visible{outline:2px solid var(--acc);outline-offset:-3px}
 ::selection{background:#D8E7DE}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 img{max-width:100%;height:auto}
 
 .frame{width:100%;max-width:1180px;margin:0 auto;container-type:inline-size;background:var(--paper);
-  color:var(--ink);font:400 16px/1.6 var(--sans);border-left:1px solid var(--line2);border-right:1px solid var(--line2);min-height:100svh}
+  color:var(--ink);font:400 1rem/1.6 var(--sans);border-left:1px solid var(--line2);border-right:1px solid var(--line2);min-height:100svh}
 .in{max-width:1080px;margin:0 auto;padding-left:20px;padding-right:20px}
 .sec{padding-top:clamp(44px,6cqw,88px);padding-bottom:clamp(44px,6cqw,88px)}
 .bt{border-top:1px solid var(--line)} .bb{border-bottom:1px solid var(--line)}
@@ -65,38 +65,38 @@ img{max-width:100%;height:auto}
 header{position:sticky;top:0;z-index:40;background:rgba(246,245,241,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header .in{padding-top:12px;padding-bottom:12px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px}
 .brand{display:flex;align-items:baseline;gap:7px;margin-right:auto;border:0}
-.brand .g{color:var(--acc);font-size:16px;line-height:1}
-.brand .n{font-size:16px;font-weight:600;letter-spacing:-.025em;color:var(--ink)}
-nav.top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-family:var(--mono);font-size:12.5px}
+.brand .g{color:var(--acc);font-size:1rem;line-height:1}
+.brand .n{font-size:1rem;font-weight:600;letter-spacing:-.025em;color:var(--ink)}
+nav.top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-family:var(--mono);font-size:0.7812rem}
 nav.top a{color:var(--mut);border-bottom:1px solid var(--line2);white-space:nowrap;padding:2px 0}
 nav.top a:hover{color:var(--ink)}
 
 .status{background:var(--white);border-bottom:1px solid var(--line)}
 .status .in{padding-top:9px;padding-bottom:9px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;
-  font-family:var(--mono);font-size:11px;color:var(--faint2)}
+  font-family:var(--mono);font-size:0.6875rem;color:var(--faint2)}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--acc);display:inline-block}
 .sep{color:#C6C2B6}
 
-h1{margin:0;font-size:clamp(34px,6.2cqw,66px);line-height:1.02;letter-spacing:-.038em;font-weight:600;max-width:16ch;text-wrap:balance}
-.lede{margin:clamp(18px,2.4cqw,26px) 0 0;font-size:clamp(16.5px,1.7cqw,20px);line-height:1.5;color:var(--body);max-width:50ch;text-wrap:pretty}
-h2{margin:0;font-size:clamp(24px,3.2cqw,36px);font-weight:600;letter-spacing:-.028em;line-height:1.1}
-h3{margin:0;font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
-.sub{margin:16px 0 0;font-size:16px;line-height:1.6;color:var(--mut);max-width:58ch}
-.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+h1{margin:0;font-size:clamp(2.125rem,6.2cqw,4.125rem);line-height:1.02;letter-spacing:-.038em;font-weight:600;max-width:16ch;text-wrap:balance}
+.lede{margin:clamp(18px,2.4cqw,26px) 0 0;font-size:clamp(1.0312rem,1.7cqw,1.25rem);line-height:1.5;color:var(--body);max-width:50ch;text-wrap:pretty}
+h2{margin:0;font-size:clamp(1.5rem,3.2cqw,2.25rem);font-weight:600;letter-spacing:-.028em;line-height:1.1}
+h3{margin:0;font-size:1.0625rem;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.sub{margin:16px 0 0;font-size:1rem;line-height:1.6;color:var(--mut);max-width:58ch}
+.kicker{font-family:var(--mono);font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 
-.cmdnote{margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--faint2)}
+.cmdnote{margin-top:12px;font-family:var(--mono);font-size:0.6875rem;color:var(--faint2)}
 
 .grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .g-stat{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
 .g-step{grid-template-columns:repeat(auto-fit,minmax(min(100%,262px),1fr))}
 .cell{background:var(--white);padding:clamp(18px,2.4cqw,26px) 18px}
-.big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(26px,3.4cqw,38px);font-weight:600;letter-spacing:-.03em;line-height:1}
-.cap{margin-top:9px;font-size:12.5px;line-height:1.35;color:var(--mut)}
-.cell p{margin:8px 0 0;font-size:14px;line-height:1.55;color:var(--mut);text-wrap:pretty}
-.num{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--faint)}
+.big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(1.625rem,3.4cqw,2.375rem);font-weight:600;letter-spacing:-.03em;line-height:1}
+.cap{margin-top:9px;font-size:0.7812rem;line-height:1.35;color:var(--mut)}
+.cell p{margin:8px 0 0;font-size:0.875rem;line-height:1.55;color:var(--mut);text-wrap:pretty}
+.num{font-family:var(--mono);font-size:0.6875rem;letter-spacing:.1em;color:var(--faint)}
 
 pre.term{margin:clamp(20px,2.6cqw,30px) 0 0;background:var(--ink);border-radius:3px;padding:clamp(18px,2.4cqw,26px);
-  overflow-x:auto;font-family:var(--mono);font-size:12.5px;line-height:1.85;color:#CFCBBB;white-space:pre}
+  overflow-x:auto;font-family:var(--mono);font-size:0.7812rem;line-height:1.85;color:#CFCBBB;white-space:pre}
 pre.term .c{color:#8F8B7A} pre.term .ok{color:var(--acc-br)} pre.term .w{color:var(--amber)} pre.term .hi{color:#F2F0E9}
 .cursor{animation:blink 1.1s step-end 5;color:var(--acc-br)}
 
@@ -104,52 +104,52 @@ pre.term .c{color:#8F8B7A} pre.term .ok{color:var(--acc-br)} pre.term .w{color:v
 .card{display:flex;flex-direction:column;gap:8px;padding:16px 15px 15px;background:var(--paper);border:1px solid var(--line);
   border-radius:3px;transition:transform 140ms ease,border-color 140ms ease}
 .wht .card{background:var(--paper)}
-.card .gl{font-family:var(--mono);font-size:16px;color:var(--acc);line-height:1}
-.card .nm{font-size:16px;font-weight:600;letter-spacing:-.018em;line-height:1.2;color:var(--ink)}
+.card .gl{font-family:var(--mono);font-size:1rem;color:var(--acc);line-height:1}
+.card .nm{font-size:1rem;font-weight:600;letter-spacing:-.018em;line-height:1.2;color:var(--ink)}
 .card .nm a{color:inherit;border-bottom:1px solid rgba(29,107,79,.34)}
-.card .ds{font-size:14px;line-height:1.45;color:var(--mut);flex:1}
-.card .src{font-family:var(--mono);font-size:11px;color:var(--faint2);line-height:1.4}
-.tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;padding:3px 6px;align-self:flex-start}
+.card .ds{font-size:0.875rem;line-height:1.45;color:var(--mut);flex:1}
+.card .src{font-family:var(--mono);font-size:0.6875rem;color:var(--faint2);line-height:1.4}
+.tag{font-family:var(--mono);font-size:0.6875rem;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;padding:3px 6px;align-self:flex-start}
 .tag.live{color:#1D6B4F;background:#E4EFE8} .tag.hold{color:#8A6414;background:#F6EFDC}
 
 .rows{margin-top:clamp(22px,3cqw,32px);border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:14px 16px;border-bottom:1px solid var(--line3);background:var(--white)}
 .row:last-child{border-bottom:0}
-.row .n{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--ink);flex:1 1 190px;min-width:0}
-.row .t{font-family:var(--mono);font-size:12.5px;color:var(--faint2)}
-.pill{font-size:11px;letter-spacing:.04em;text-transform:uppercase;font-family:var(--mono);border-radius:3px;padding:3px 7px}
+.row .n{font-family:var(--mono);font-size:0.875rem;font-weight:500;color:var(--ink);flex:1 1 190px;min-width:0}
+.row .t{font-family:var(--mono);font-size:0.7812rem;color:var(--faint2)}
+.pill{font-size:0.6875rem;letter-spacing:.04em;text-transform:uppercase;font-family:var(--mono);border-radius:3px;padding:3px 7px}
 .pill.ok{color:#1D6B4F;background:#E4EFE8} .pill.wip{color:#8A6414;background:#F6EFDC}
 
 .two{margin-top:clamp(26px,3.4cqw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,3cqw,44px)}
-.colhead{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:12px}
+.colhead{font-family:var(--mono);font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;padding-bottom:12px}
 .li{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--dline2)}
-.li .m{font-family:var(--mono);font-size:12.5px;flex:none}
-.li .x{font-size:16px;line-height:1.5;text-wrap:pretty}
-.punch{margin:clamp(28px,3.4cqw,44px) 0 0;font-size:clamp(19px,2.4cqw,28px);line-height:1.35;letter-spacing:-.02em;max-width:32ch;text-wrap:balance}
+.li .m{font-family:var(--mono);font-size:0.7812rem;flex:none}
+.li .x{font-size:1rem;line-height:1.5;text-wrap:pretty}
+.punch{margin:clamp(28px,3.4cqw,44px) 0 0;font-size:clamp(1.1875rem,2.4cqw,1.75rem);line-height:1.35;letter-spacing:-.02em;max-width:32ch;text-wrap:balance}
 
-.rule{font-size:clamp(19px,2.4cqw,28px);line-height:1.4;letter-spacing:-.017em;max-width:44ch;text-wrap:pretty;margin:0}
+.rule{font-size:clamp(1.1875rem,2.4cqw,1.75rem);line-height:1.4;letter-spacing:-.017em;max-width:44ch;text-wrap:pretty;margin:0}
 .honest{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:12px;margin-top:clamp(22px,3cqw,32px)}
 .hc{background:var(--white);border:1px solid var(--line);border-radius:3px;padding:clamp(18px,2.4cqw,26px)}
-.hc .hd{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.hc .hd{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:0.6875rem;letter-spacing:.12em;text-transform:uppercase}
 .hc h3{margin-top:12px}
 
 details{border:1px solid var(--line);border-radius:3px;background:var(--white);margin-top:10px}
-summary{padding:14px 16px;font-weight:500;font-size:15.5px;cursor:pointer;list-style:none;display:flex;gap:10px;align-items:baseline}
+summary{padding:14px 16px;font-weight:500;font-size:0.9688rem;cursor:pointer;list-style:none;display:flex;gap:10px;align-items:baseline}
 summary::-webkit-details-marker{display:none}
 summary::before{content:"+" / "";font-family:var(--mono);color:var(--acc);flex:none}
 details[open] summary::before{content:"–" / ""}
-details p{margin:0;padding:0 16px 15px 34px;font-size:14.5px;line-height:1.6;color:var(--mut);max-width:64ch}
+details p{margin:0;padding:0 16px 15px 34px;font-size:0.9062rem;line-height:1.6;color:var(--mut);max-width:64ch}
 
-code.k{font-family:var(--mono);font-size:14px;background:var(--line4);border:1px solid var(--line);border-radius:3px;padding:1px 5px}
+code.k{font-family:var(--mono);font-size:0.875rem;background:var(--line4);border:1px solid var(--line);border-radius:3px;padding:1px 5px}
 
 footer{margin-top:clamp(48px,6cqw,96px);border-top:1px solid var(--line);background:var(--white)}
 footer .in{padding-top:clamp(28px,3.5cqw,44px);padding-bottom:clamp(28px,3.5cqw,44px)}
 .fr{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-start}
 .fr .l{flex:1 1 220px;min-width:0}
-.fr p{margin:10px 0 0;font-size:12.5px;line-height:1.6;color:var(--faint2);max-width:42ch}
-footer nav{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:12.5px}
+.fr p{margin:10px 0 0;font-size:0.7812rem;line-height:1.6;color:var(--faint2);max-width:42ch}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:0.7812rem}
 footer nav a{color:var(--mut);border-bottom:1px solid var(--line2)}
-.copy{margin-top:24px;padding-top:16px;border-top:1px solid var(--line3);font-family:var(--mono);font-size:11px;color:var(--faint)}
+.copy{margin-top:24px;padding-top:16px;border-top:1px solid var(--line3);font-family:var(--mono);font-size:0.6875rem;color:var(--faint)}
 
 
 .mk{display:inline-block;flex:none;width:13px;height:13px;position:relative;top:3px}
@@ -161,7 +161,7 @@ footer nav a{color:var(--mut);border-bottom:1px solid var(--line2)}
 
 .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(22px,2.8cqw,30px)}
 .btn-p,.btn-s{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:3px;
-  font-size:15px;font-weight:500;border-bottom:0}
+  font-size:0.9375rem;font-weight:500;border-bottom:0}
 .btn-p{background:var(--acc);color:#F6F5F1;border:1px solid var(--acc)}
 .btn-p:hover{background:#175840;color:#fff;border-color:#175840}
 .btn-s{background:transparent;color:var(--ink);border:1px solid var(--line2)}
@@ -170,36 +170,36 @@ footer nav a{color:var(--mut);border-bottom:1px solid var(--line2)}
 .creds{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
   border:1px solid var(--line);border-radius:3px;overflow:hidden;margin-top:18px}
 .cd{background:var(--white);padding:16px 16px}
-.cdn{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(20px,2.6cqw,26px);font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--ink)}
-.cdl{margin-top:7px;font-size:12.5px;line-height:1.45;color:var(--mut)}
+.cdn{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(1.25rem,2.6cqw,1.625rem);font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.cdl{margin-top:7px;font-size:0.7812rem;line-height:1.45;color:var(--mut)}
 
 .behind{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:12px;margin-top:clamp(22px,3cqw,32px)}
 .bcard{display:flex;flex-direction:column;gap:9px;padding:clamp(20px,2.6cqw,28px);background:var(--white);
   border:1px solid var(--line);border-radius:3px;border-bottom:1px solid var(--line);color:var(--ink)}
 .bcard:hover{color:var(--ink)}
-.bk{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
-.bt2{font-size:19px;font-weight:600;letter-spacing:-.022em;line-height:1.2}
-.bd{font-size:14.5px;line-height:1.55;color:var(--mut);flex:1}
-.bl{font-family:var(--mono);font-size:12px;color:var(--acc);border-bottom:1px solid rgba(29,107,79,.3);align-self:flex-start;padding-bottom:1px}
+.bk{font-family:var(--mono);font-size:0.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+.bt2{font-size:1.1875rem;font-weight:600;letter-spacing:-.022em;line-height:1.2}
+.bd{font-size:0.9062rem;line-height:1.55;color:var(--mut);flex:1}
+.bl{font-family:var(--mono);font-size:0.75rem;color:var(--acc);border-bottom:1px solid rgba(29,107,79,.3);align-self:flex-start;padding-bottom:1px}
 
 .forwho{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
 .fw{display:flex;flex-direction:column;gap:6px}
-.fwt{font-size:15.5px;font-weight:600;letter-spacing:-.018em;color:var(--ink);margin:0}
-.fwd{font-size:14.5px;line-height:1.55;color:var(--mut)}
+.fwt{font-size:0.9688rem;font-weight:600;letter-spacing:-.018em;color:var(--ink);margin:0}
+.fwd{font-size:0.9062rem;line-height:1.55;color:var(--mut)}
 
 .offer{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(24px,3.4cqw,48px);align-items:start}
 .olist{margin:20px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
-.olist li{position:relative;padding-left:22px;font-size:15px;line-height:1.55;color:var(--body)}
+.olist li{position:relative;padding-left:22px;font-size:0.9375rem;line-height:1.55;color:var(--body)}
 .olist li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--acc)}
 .oc{background:var(--white);border:1px solid #C9DED3;border-radius:3px;padding:clamp(22px,2.8cqw,30px)}
-.price{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(42px,5.4cqw,60px);font-weight:600;letter-spacing:-.04em;line-height:1;color:var(--ink);display:flex;align-items:baseline;gap:4px;flex-wrap:wrap}
+.price{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:clamp(2.625rem,5.4cqw,3.75rem);font-weight:600;letter-spacing:-.04em;line-height:1;color:var(--ink);display:flex;align-items:baseline;gap:4px;flex-wrap:wrap}
 .price .cur{font-size:.5em;color:var(--mut)}
-.price .per{font-family:var(--sans);font-size:14px;font-weight:400;letter-spacing:0;color:var(--mut);margin-left:10px}
+.price .per{font-family:var(--sans);font-size:0.875rem;font-weight:400;letter-spacing:0;color:var(--mut);margin-left:10px}
 .obtn{width:100%;justify-content:center;margin-top:16px}
-.guar{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;line-height:1.6;color:var(--mut)}
+.guar{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:0.875rem;line-height:1.6;color:var(--mut)}
 .guar strong{display:block;color:var(--ink);font-weight:600;margin-bottom:6px}
 
-.anchor{margin-top:12px;font-size:13.5px;line-height:1.55;color:var(--mut)}
+.anchor{margin-top:12px;font-size:0.8438rem;line-height:1.55;color:var(--mut)}
 .anchor strong{color:var(--ink);font-weight:600}
 @container (min-width:760px){.creds{grid-template-columns:repeat(4,1fr)}}
 @media (max-width:430px){.creds{grid-template-columns:1fr}}
@@ -207,34 +207,35 @@ footer nav a{color:var(--mut);border-bottom:1px solid var(--line2)}
 .hero{display:grid;grid-template-columns:1fr;gap:clamp(30px,4cqw,52px);
   padding-top:clamp(34px,5cqw,68px);padding-bottom:clamp(30px,4cqw,48px)}
 @container (min-width:880px){.hero{grid-template-columns:1.15fr .85fr;align-items:start}}
-.hero h1{font-size:clamp(34px,5.8cqw,60px);line-height:1.02;letter-spacing:-.04em;max-width:none;text-wrap:balance}
-.hline{margin-top:clamp(20px,2.6cqw,28px);font-size:14px;line-height:1.6;color:var(--mut)}
+.hero h1{font-size:clamp(2.125rem,5.8cqw,3.75rem);line-height:1.02;letter-spacing:-.04em;max-width:none;text-wrap:balance}
+.hline{margin-top:clamp(20px,2.6cqw,28px);font-size:0.875rem;line-height:1.6;color:var(--mut)}
 .hline strong{color:var(--ink);font-weight:600}
 .ledg{border:1px solid var(--line);border-radius:3px;background:var(--white);overflow:hidden}
 .ledghead{display:flex;justify-content:space-between;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line);
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  font-family:var(--mono);font-size:0.6562rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
 .lrow{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line4)}
 .lrow:last-child{border-bottom:0}
 .lrow.held{background:#FBF7EC}
-.ln{flex:1;min-width:0;font-size:13px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.lv{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:13.5px;font-weight:500;color:var(--ink)}
-.lv.none{font-size:11.5px;font-weight:400;color:#8A6414;letter-spacing:.04em}
-.lt{flex:none;width:52px;text-align:right;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.ln{flex:1;min-width:0;font-size:0.8125rem;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lv{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:0.8438rem;font-weight:500;color:var(--ink)}
+.lv.none{font-size:0.7188rem;font-weight:400;color:#8A6414;letter-spacing:.04em}
+.lt{flex:none;width:52px;text-align:right;font-family:var(--mono);font-size:0.625rem;letter-spacing:.08em;text-transform:uppercase}
 .lt.ok{color:var(--acc)} .lt.no{color:#8A6414}
-.ledgnote{margin:14px 0 0;font-size:13.5px;line-height:1.55;color:var(--mut)}
+.ledgnote{margin:14px 0 0;font-size:0.8438rem;line-height:1.55;color:var(--mut)}
 @media (hover:hover){.bcard:hover{border-color:#CFCBBE;transform:translateY(-2px)}}
 .bcard{transition:transform 140ms ease,border-color 140ms ease}
 @media (hover:hover){.card:hover{transform:translateY(-2px);border-color:#CFCBBE}}
 @media (pointer:coarse){nav.top a,footer nav a,.card .nm a{min-height:48px;display:inline-flex;align-items:center}summary{min-height:56px;align-items:center}}
 html{overflow-x:hidden}
-@media (max-width:520px){nav.top a:not([href^="#"]){display:none}nav.top{gap:4px 12px;font-size:12px}}
+@media (max-width:520px){nav.top a:not([href^="#"]){display:none}nav.top{gap:4px 12px;font-size:0.75rem}}
 @media (max-width:480px){.status .m-hide{display:none}}
 </style>
 <!-- analytics: uncomment one line after creating the account
 <script defer data-domain="toolsthatrank.com" src="https://plausible.io/js/script.js"></script>
 -->
 <script src="/site-analytics.js" defer></script>
-<style id="hcta-css">.hcta{display:inline-flex;align-items:center;min-height:48px;padding:0 14px;margin-left:auto;border-radius:3px;border:1px solid var(--acc,#1D6B4F);color:var(--acc,#1D6B4F);background:transparent;font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap}.hcta:hover{background:var(--acc,#1D6B4F);color:#F6F5F1}nav.top a{min-height:48px;display:inline-flex;align-items:center}.btn-s{border-color:#8C887C}@media (max-width:520px){header .in .hcta{order:2}header .in nav.top{order:3;width:100%}}@media (min-width:521px){header .in:has(nav.top a[href="/pricing/"]) .hcta{display:none}}</style>
+<style id="hcta-css">.hcol,.hero>*,.in>*{min-width:0}a[href^="mailto:"]{overflow-wrap:anywhere}.wrapx{max-width:100%;overflow-x:auto}.hcta{display:inline-flex;align-items:center;min-height:48px;padding:0 14px;margin-left:auto;border-radius:3px;border:1px solid var(--acc,#1D6B4F);color:var(--acc,#1D6B4F);background:transparent;font-size:0.875rem;font-weight:500;text-decoration:none;white-space:nowrap}.hcta:hover{background:var(--acc,#1D6B4F);color:#F6F5F1}nav.top a{min-height:48px;display:inline-flex;align-items:center}.btn-s{border-color:#8C887C}@media (max-width:520px){header .in .hcta{order:2}header .in nav.top{order:3;width:100%}}header .in:has(.hcta) nav.top a[href="/pricing/"]{display:none}#home_hero_tiers,#pricing_hero_faq{display:inline-flex;align-items:center;min-height:48px}</style>
+<style id="r2-fit">@media (max-width:760px){table{display:block;overflow-x:auto;max-width:100%;min-width:0!important}pre{max-width:100%;overflow-x:auto}main a,main code,footer a,.prose,p{overflow-wrap:anywhere}.scta-btns,.scta-b{flex-wrap:wrap}.scta a.scta-b,a.scta-b,.scta-b a{white-space:normal;height:auto;min-height:48px}[class*="stat"]>*,.grid>*{min-width:0}}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -245,7 +246,7 @@ html{overflow-x:hidden}
     <a class="brand" href="/"><span class="g" aria-hidden="true">◈</span><span class="n">ToolsThatRank</span></a>
     <nav class="top" aria-label="Primary">
       <a href="#build">the pipeline</a>
-      <a href="/pricing/">pricing</a>
+      <a href="/pricing/" data-cta="home_pricing_link_1" id="home_pricing_link_1">pricing</a>
       <a href="#proof">proof</a>
       <a href="#tools">shipped</a>
       <a href="#how">method</a>
@@ -260,8 +261,8 @@ html{overflow-x:hidden}
 <div class="status">
   <div class="in">
     <span style="display:inline-flex;align-items:center;gap:6px"><span class="dot" aria-hidden="true"></span>34 sites live</span>
-    <span class="sep m-hide" aria-hidden="true">·</span><span class="m-hide">533 pipeline clicks in the 30 days to 14 Aug 2026</span>
-    <span class="sep m-hide" aria-hidden="true">·</span><span class="m-hide">87,500+ extension users</span>
+    
+    
     <span class="sep m-hide" aria-hidden="true">·</span><span class="m-hide">shipped by agents, not by hand</span>
   </div>
 </div>
@@ -271,17 +272,17 @@ html{overflow-x:hidden}
 <section class="in hero">
   <div class="hcol">
     <h1>Give it a niche.<br>Get a tool site that ranks.</h1>
-  <p class="qas" style="margin:16px 0 0;font-size:16px;line-height:1.6;color:var(--body);max-width:62ch">ToolsThatRank is a $99 pipeline. You give it a niche, and it reads the topic, builds a working tool for it and checks every figure against a primary source before anything ships. It has shipped 34 live tool sites so far.</p>
+  <p class="qas" style="margin:16px 0 0;font-size:1rem;line-height:1.6;color:var(--body);max-width:62ch">ToolsThatRank is a $99 pipeline you run yourself. Give it a niche and it reads the topic, builds a working tool and checks every figure against a primary source before anything ships. It has shipped 34 live tool sites so far.</p>
     <div class="cta-row">
       <a class="btn-p obuy" href="https://buy.stripe.com/4gMaEY5Am0ti6RT9UV43S0j" data-cta="home_hero_checkout_99" id="home_hero_checkout_99">Get the pipeline &#183; $99 once</a>
       <a class="btn-s" href="#tools" data-cta="home_hero_sites" id="home_hero_sites">See the sites it built</a>
     </div>
-    <p style="margin:10px 0 0;font-size:14px;color:var(--faint)">One payment, no renewal. Refund within 14 days, no questions asked.</p>
-    <p style="margin:8px 0 0;font-size:15px;color:var(--body)">The method and the data are free to read. The pipeline is $99 once. <a href="/pricing/#tiers" data-cta="home_hero_tiers" id="home_hero_tiers">Niche vetting with it is $279</a>.</p>
+    <p style="margin:10px 0 0;font-size:0.875rem;color:var(--faint)">One payment, no renewal. Refund within 14 days, no questions asked.</p>
+    <p style="margin:8px 0 0;font-size:0.9375rem;color:var(--body)">The method and the data are free to read. The pipeline is $99 once. <a href="/pricing/#tiers" data-cta="home_hero_tiers" id="home_hero_tiers">Niche vetting with it is $279</a>.</p>
     <p class="lede">Two of those sites are a reservoir tracker on live USGS gages and a take-home pay estimator on this year&#39;s HMRC rates. When a value will not prove, the run stops and the page waits for you.</p>
-    <p class="stamp" style="margin:6px 0 0;font-size:13px;color:var(--faint)">Updated 2026-10-28</p>
+    <p class="stamp" style="margin:6px 0 0;font-size:0.8125rem;color:var(--faint)">Updated 2026-10-28</p>
     <aside class="hc" style="margin-top:24px" aria-labelledby="before-buy">
-      <h2 id="before-buy" style="font-size:22px">Before you spend $99</h2>
+      <h2 id="before-buy" style="font-size:1.375rem">Before you spend $99</h2>
       <p>You receive the pipeline source, site templates, provider adapters and deployment step. You run it yourself with Node 18.17+, a terminal, your own model access and a hosting account for deployment. Model usage, domains and hosting are separate costs.</p>
       <details><summary>Worked example. A cooking converter</summary>
         <p>Input. A cooking-conversion niche and ingredient-specific source data. Calculation. With a declared example density of 120 g per cup, 2 cups × 120 g/cup = 240 g. A different ingredient needs its own density; the number is not universal.</p>
@@ -326,12 +327,12 @@ html{overflow-x:hidden}
       </div>
       <div class="oc">
         <div class="price"><span class="cur">$</span>99<span class="per">one time, yours forever</span></div>
-        <div class="anchor">Competing tools in this category bill <strong>$129 to $399 a month</strong>. SEOmatic listed $149 a month and Clearscope $129 when their pricing pages were last read in August 2026. Check them yourself, they move. Yours for $99, once.</div>
+        <div class="anchor">Many SEO tools in this category bill every month. This is one payment of $99, it does not renew, and you keep what you paid for.</div>
         <a class="btn-p obtn obuy" href="https://buy.stripe.com/4gMaEY5Am0ti6RT9UV43S0j" data-cta="home_offer_checkout_99" id="home_offer_checkout_99">Get the pipeline &#183; $99 once</a>
         <a class="btn-s obtn" href="/pricing/" data-cta="home_offer_pricing" id="home_offer_pricing">Compare all three tiers</a>
         <div class="guar">
           <strong>Fourteen days, no questions, no conditions.</strong>
-          Run it on your own niche. If you don't want it, say so within 14 days and I refund you in full. You don't have to justify it and I won't ask you to. Reply to your Stripe receipt, which reaches <a href="mailto:lipmichal@gmail.com">lipmichal@gmail.com</a>, the support address on the payment account. <a href="mailto:support@toolsthatrank.com">support@toolsthatrank.com</a> works too. A person reads both.
+          Run it on your own niche. If you don't want it, say so within 14 days and I refund you in full. You don't have to justify it and I won't ask you to. Reply to your Stripe receipt, which reaches <a href="mailto:lipmichal@gmail.com">lipmichal@gmail.com</a>, the support address on the payment account. <a href="mailto:support@toolsthatrank.com" data-cta="home_ttr_link_2" id="home_ttr_link_2">support@toolsthatrank.com</a> works too. A person reads both.
         </div>
       </div>
     </div>
@@ -340,13 +341,13 @@ html{overflow-x:hidden}
 
 <section class="wht bt bb">
   <div class="in" style="padding-top:clamp(26px,3.2cqw,38px);padding-bottom:clamp(26px,3.2cqw,38px)">
-    <h2 style="font-size:clamp(15px,1.5cqw,17px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-family:var(--mono);margin-bottom:14px">Who this is for</h2>
+    <h2 style="font-size:clamp(0.9375rem,1.5cqw,1.0625rem);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-family:var(--mono);margin-bottom:14px">Who this is for</h2>
     <div class="forwho">
       <div class="fw"><h3 class="fwt">Solo operators</h3><span class="fwd">You want a portfolio of small tool sites that earn. Run the pipeline once per niche instead of hand-building each one.</span></div>
       <div class="fw"><h3 class="fwt">SEO agencies</h3><span class="fwd">You need pages a client's legal team won't flinch at. Every figure traces back to the source it cites, on every site you run it for.</span></div>
       <div class="fw"><h3 class="fwt">Indie hackers</h3><span class="fwd">You've watched AI content get de-indexed and you want the opposite problem. Fewer pages, none of them junk.</span></div>
     </div>
-    <p style="margin:18px 0 0;font-size:14.5px;line-height:1.6;color:var(--faint2);max-width:64ch">You do not have to take any of this on faith. Six sites it built are linked below, each one live, each figure traceable to the source it cites.</p>
+    <p style="margin:18px 0 0;font-size:0.9062rem;line-height:1.6;color:var(--faint2);max-width:64ch">You do not have to take any of this on faith. Six sites it built are linked below, each one live, each figure traceable to the source it cites.</p>
   </div>
 </section>
 
@@ -375,7 +376,7 @@ html{overflow-x:hidden}
 
 <section class="wht bt bb">
   <div class="in" style="padding-top:clamp(32px,4.5cqw,58px);padding-bottom:clamp(32px,4.5cqw,58px)">
-    <h2 style="font-size:clamp(15px,1.5cqw,17px);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-family:var(--mono);margin-bottom:16px">The rule the whole thing runs on</h2>
+    <h2 style="font-size:clamp(0.9375rem,1.5cqw,1.0625rem);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-family:var(--mono);margin-bottom:16px">The rule the whole thing runs on</h2>
     <p class="rule">The model never states a number. Code fetches every value, recomputes it, then re-fetches the citation to confirm it still says what was claimed. <span style="color:var(--mut)">That refusal is the product.</span></p>
   </div>
 </section>
@@ -404,10 +405,10 @@ html{overflow-x:hidden}
   <div class="in sec">
     <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px">
       <h2>What it shipped</h2>
-      <span style="font-family:var(--mono);font-size:11px;color:var(--faint2)">six of the 34 live</span>
+      <span style="font-family:var(--mono);font-size:0.6875rem;color:var(--faint2)">six of the 34 live</span>
     </div>
-    <p class="qas" data-keyword="programmatic seo tool pipeline" style="margin:16px 0 0;font-size:16px;line-height:1.6;color:var(--body);max-width:62ch">ToolsThatRank has shipped 34 live tool sites citing primary sources including USGS, HMRC and the IRS. Six are listed below, and all 34 are the properties measured on <a href="/ctr-by-position/">the measured data page</a>.</p>
-    <p class="sub" style="margin-top:10px">Each one is a working tool, not an article about one. Some calculate, some convert, and one takes no input at all because its job is to read 25 live gages and tell you whether you can launch a boat. The model didn't write a single figure on them. Code fetched and recomputed all of it. Every domain below was registered between 19 and 22 June 2026, so read the traffic as six weeks of compounding, not a mature fleet.</p>
+    <p class="qas" data-keyword="programmatic seo tool pipeline" style="margin:16px 0 0;font-size:1rem;line-height:1.6;color:var(--body);max-width:62ch">ToolsThatRank has shipped 34 live tool sites citing primary sources including USGS, HMRC and the IRS. Six are listed below, and all 34 are the properties measured on <a href="/ctr-by-position/">the measured data page</a>.</p>
+    <p class="sub" style="margin-top:10px">Each one is a working tool, not an article about one. Some calculate, some convert, and one takes no input at all because its job is to read 25 live gages and tell you whether you can launch a boat. The model didn't write a single figure on them. Code fetched and recomputed all of it. Every domain below was registered between 19 and 22 June 2026, so read the traffic, measured in August 2026, as about six weeks of compounding, not a mature fleet.</p>
 
     <div class="cards">
       <article class="card">
@@ -456,7 +457,7 @@ html{overflow-x:hidden}
 
     <div style="margin-top:clamp(26px,3.4cqw,38px);border:1px solid var(--line);border-radius:3px;background:var(--paper);padding:clamp(20px,2.6cqw,30px)">
       <div class="kicker" style="margin-bottom:14px">Who is behind it</div>
-      <p style="margin:0;font-size:16px;line-height:1.6;color:var(--body);max-width:64ch">Built by <a href="https://github.com/theluckystrike" target="_blank" rel="noopener">Michael Lip</a>, a solo developer whose code is merged into <strong style="font-weight:600;color:var(--ink)">66 open-source projects holding 241,000+ stars between them</strong>, among them Prefect, Puter and Google's Chrome extension samples. The same agentic pipeline runs every property listed here. None of it's hand-maintained.</p>
+      <p style="margin:0;font-size:1rem;line-height:1.6;color:var(--body);max-width:64ch">Built by <a href="https://github.com/theluckystrike" target="_blank" rel="noopener">Michael Lip</a>, a solo developer whose code is merged into <strong style="font-weight:600;color:var(--ink)">66 open-source projects holding 241,000+ stars between them</strong>, among them Prefect, Puter and Google's Chrome extension samples. The same agentic pipeline runs every property listed here. None of it's hand-maintained.</p>
       <div class="creds">
         <div class="cd"><div class="cdn">75</div><div class="cdl">pull requests merged into projects he doesn't own, across 66 repos</div></div>
         <div class="cd"><div class="cdn">241,000+</div><div class="cdl">combined stars on those 66 projects, 36 of them above 1,000</div></div>
@@ -467,8 +468,8 @@ html{overflow-x:hidden}
         <div class="cd"><div class="cdn">533</div><div class="cdl">organic clicks a month on the sites this pipeline built, in the 30 days to <time datetime="2026-08-14">14 August 2026</time></div></div>
         <div class="cd"><div class="cdn">$10,031.31</div><div class="cdl">all-time revenue net of refunds, 306 succeeded Stripe charges since 10 Oct 2024, read 15 Aug 2026. Mirrored on <a href="https://trustmrr.com/startup/belikenative" target="_blank" rel="noopener">TrustMRR</a></div></div>
       </div>
-      <p style="margin:16px 0 0;font-size:13.5px;line-height:1.6;color:var(--faint2);max-width:64ch">Pull-request counts come from the GitHub API and exclude self-merges. Named projects include <a href="https://github.com/PrefectHQ/prefect" target="_blank" rel="noopener">PrefectHQ/prefect</a>, <a href="https://github.com/HeyPuter/puter" target="_blank" rel="noopener">HeyPuter/puter</a>, <a href="https://github.com/GoogleChrome/chrome-extensions-samples" target="_blank" rel="noopener">GoogleChrome/chrome-extensions-samples</a>. Star counts and the 36-above-1,000 detail were summed over those 66 repositories on <time datetime="2026-08-15">15 August 2026</time> and came to 241,827. Extension totals come from the one file that holds them for the whole estate, which recorded 87 extensions and 87,500 users on <time datetime="2026-08-14">14 August 2026</time>. Those extensions are a separate business from this pipeline and are here as evidence that one person ships, not as output of the product you are buying.</p>
-      <p style="margin:10px 0 0;font-size:13.5px;line-height:1.6;color:var(--faint2);max-width:64ch">Revenue is a dated reading, not a live feed. Read from the Stripe API on <time datetime="2026-08-15">15 August 2026</time>, the account held 38 active subscriptions worth $267.86 MRR, and two of those sit on a one-dollar seven-day trial price, so 36 pay full price. Traffic comes from this operator's own Search Console. He holds 35 verified domains, 34 of them readable by the reporting account, and those 34 are the sites counted above. Over the 30 days to <time datetime="2026-08-14">14 August 2026</time> the 34 took 1,826 clicks in total. Strip out belikenative.com and zovo.one, which predate the pipeline and were not built by it, and 533 remain. That 533 is the number this product earned. Every figure in this grid carries the date it was read, and a reading goes stale.</p>
+      <p style="margin:16px 0 0;font-size:0.8438rem;line-height:1.6;color:var(--faint2);max-width:64ch">Pull-request counts come from the GitHub API and exclude self-merges. Named projects include <a href="https://github.com/PrefectHQ/prefect" target="_blank" rel="noopener">PrefectHQ/prefect</a>, <a href="https://github.com/HeyPuter/puter" target="_blank" rel="noopener">HeyPuter/puter</a>, <a href="https://github.com/GoogleChrome/chrome-extensions-samples" target="_blank" rel="noopener">GoogleChrome/chrome-extensions-samples</a>. Star counts and the 36-above-1,000 detail were summed over those 66 repositories on <time datetime="2026-08-15">15 August 2026</time> and came to 241,827. Extension totals come from the one file that holds them for the whole estate, which recorded 87 extensions and 87,500 users on <time datetime="2026-08-14">14 August 2026</time>. Those extensions are a separate business from this pipeline and are here as evidence that one person ships, not as output of the product you are buying.</p>
+      <p style="margin:10px 0 0;font-size:0.8438rem;line-height:1.6;color:var(--faint2);max-width:64ch">Revenue is a dated reading, not a live feed. Read from the Stripe API on <time datetime="2026-08-15">15 August 2026</time>, the account held 38 active subscriptions worth $267.86 MRR, and two of those sit on a one-dollar seven-day trial price, so 36 pay full price. Traffic comes from this operator's own Search Console. He holds 35 verified domains, 34 of them readable by the reporting account, and those 34 are the sites counted above. Over the 30 days to <time datetime="2026-08-14">14 August 2026</time> the 34 took 1,826 clicks in total. Strip out belikenative.com and zovo.one, which predate the pipeline and were not built by it, and 533 remain. That 533 is the number this product earned. Every figure in this grid carries the date it was read, and a reading goes stale.</p>
     </div>
   </div>
 </section>
@@ -479,7 +480,7 @@ html{overflow-x:hidden}
   <p class="kicker">October operator case study</p>
   <h2 id="publishing-case-title">19 published pages across 15 websites</h2>
   <p class="sub">27 page attempts produced working calculators, validators and guides. Eight targets were held. Open the published pages and read what the runs proved, what they left unfinished, and how to measure the search traffic next.</p>
-  <div class="cta-row"><a class="btn-p" href="/organic-search-case-study/">Read the publishing case study</a></div>
+  <div class="cta-row"><a class="btn-p" href="/organic-search-case-study/" data-cta="home_btn_3" id="home_btn_3">Read the publishing case study</a></div>
 </section>
 
 <section id="how" class="bt">
@@ -553,23 +554,23 @@ html{overflow-x:hidden}
     <h2>Questions people actually ask</h2>
     <div style="margin-top:clamp(20px,2.6cqw,30px);max-width:72ch">
       <details open>
-        <summary><h3 style="display:inline;font-size:15.5px;font-weight:500">How do you stop an LLM from hallucinating numbers?</h3></summary>
+        <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">How do you stop an LLM from hallucinating numbers?</h3></summary>
         <p class="qas" data-keyword="stop llm hallucinating numbers">ToolsThatRank removes the model's permission to write numbers. Its 14 trust layers pin each figure to a cited primary source, and code recomputes the deterministic ones.</p>
       </details>
       <details>
-        <summary><h3 style="display:inline;font-size:15.5px;font-weight:500">Can AI-generated tools rank in Google?</h3></summary>
+        <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">Can AI-generated tools rank in Google?</h3></summary>
         <p>Google's March 2024 spam policies named scaled content abuse, which targets pages generated mainly to manipulate rankings rather than help anyone, no matter whether a human or a machine made them. A working tool isn't that. Utility and verified data are what earn the position, and the originality layers block any page that only restates what already ranks.</p>
       </details>
       <details>
-        <summary><h3 style="display:inline;font-size:15.5px;font-weight:500">What is a programmatic SEO pipeline?</h3></summary>
+        <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">What is a programmatic SEO pipeline?</h3></summary>
         <p>A system that generates many pages from one template and a data source. Most produce thin, near-duplicate pages. This one won't emit a page whose numbers can't be traced back to a primary source. That's why it finishes fewer pages than it starts.</p>
       </details>
       <details>
-        <summary><h3 style="display:inline;font-size:15.5px;font-weight:500">What exactly do I get for $99?</h3></summary>
+        <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">What exactly do I get for $99?</h3></summary>
         <p>The full pipeline, one time, yours to keep. Fourteen trust layers, five originality layers, eleven provider adapters (nine named LLM vendors, plus an offline stub and a custom endpoint), the site templates and the deploy step. You run it on your own machine against your own API key, for as many niches as you want. There is no per-site fee and no metering. API spend is yours. Run it against a Claude subscription and the marginal cost is nothing. The cheaper HTTP providers cost a fraction of a dollar per build, and frontier models through the CLI cost more, so pick the provider that fits your budget.</p>
       </details>
       <details>
-        <summary><h3 style="display:inline;font-size:15.5px;font-weight:500">Which LLM does it need?</h3></summary>
+        <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">Which LLM does it need?</h3></summary>
         <p>Eleven adapters ship, nine of them named LLM vendors, and the other two are an offline stub and a custom endpoint you point anywhere. You pick with one environment variable. Claude runs through the local CLI and that's the battle-tested path, while OpenAI, Kimi, GLM, DeepSeek and Ollama all share an OpenAI-compatible HTTP adapter. Get the model name wrong and it throws. Loudly, rather than guessing.</p>
       </details>
     </div>
@@ -584,16 +585,16 @@ html{overflow-x:hidden}
     <div class="fr">
       <div class="l">
         <div style="display:flex;align-items:baseline;gap:7px">
-          <span style="color:var(--acc);font-size:14px" aria-hidden="true">◈</span>
-          <span style="font-size:14px;font-weight:600;letter-spacing:-.02em">ToolsThatRank</span>
+          <span style="color:var(--acc);font-size:0.875rem" aria-hidden="true">◈</span>
+          <span style="font-size:0.875rem;font-weight:600;letter-spacing:-.02em">ToolsThatRank</span>
         </div>
         <p>Node 18.17+. Every site above was researched, built and shipped by autonomous agents. Tool results are computed from published constants and rounded once, at display.</p>
-        <p style="margin-top:8px">Support and refunds at <a href="mailto:support@toolsthatrank.com">support@toolsthatrank.com</a></p>
+        <p style="margin-top:8px">Support and refunds at <a href="mailto:support@toolsthatrank.com" data-cta="home_ttr_link_4" id="home_ttr_link_4">support@toolsthatrank.com</a></p>
       </div>
       <nav aria-label="Footer">
         <a href="https://mcp.zovo.one">MCP servers for Claude</a>
         <a href="#build">the pipeline</a>
-        <a href="/pricing/">pricing</a>
+        <a href="/pricing/" data-cta="home_pricing_link_5" id="home_pricing_link_5">pricing</a>
         <a href="#proof">proof</a>
         <a href="#tools">shipped</a>
         <a href="#how">method</a>
@@ -611,16 +612,16 @@ html{overflow-x:hidden}
         <a href="/privacy/#analytics" data-mr-consent-open>cookie settings</a>
         <a href="/terms/">terms</a>
         <a href="/terms/#refunds">refunds</a>
-        <a href="mailto:support@toolsthatrank.com">support</a>
+        <a href="mailto:support@toolsthatrank.com" data-cta="home_ttr_link_6" id="home_ttr_link_6">support</a>
         <a href="https://github.com/theluckystrike" target="_blank" rel="noopener">github</a>
         <a href="https://discord.gg/QeHxTFbqmC" target="_blank" rel="noopener">discord</a>
       </nav>
     </div>
     <div class="copy">© 2026 toolsthatrank.com · built and shipped by autonomous agents</div>
   </div>
-<p class="in" style="padding-top:0;font-size:12px"><a href="https://shapelessai.com/ai-tools/toolsthatrank" target="_blank" rel="noopener noreferrer">Directory profile on ShapelessAI</a></p>
-<p class="in" style="padding-top:0;font-size:12px"><a href="https://www.promptfrenzy.com/directory" target="_blank" rel="noopener">Explore AI tools in the PromptFrenzy directory</a></p>
-<p class="in" style="padding-top:0;font-size:12px"><a href="https://thedevtoolsdir.com/" target="_blank" rel="noopener" style="display:inline-block;border:1px solid currentColor;border-radius:6px;padding:6px 10px">Supports TheDevToolsDir</a></p>
+<p class="in" style="padding-top:0;font-size:0.75rem"><a href="https://shapelessai.com/ai-tools/toolsthatrank" target="_blank" rel="noopener noreferrer">Directory profile on ShapelessAI</a></p>
+<p class="in" style="padding-top:0;font-size:0.75rem"><a href="https://www.promptfrenzy.com/directory" target="_blank" rel="noopener">Explore AI tools in the PromptFrenzy directory</a></p>
+<p class="in" style="padding-top:0;font-size:0.75rem"><a href="https://thedevtoolsdir.com/" target="_blank" rel="noopener" style="display:inline-block;border:1px solid currentColor;border-radius:6px;padding:6px 10px">Supports TheDevToolsDir</a></p>
 </footer>
 </div>
 
