@@ -298,13 +298,13 @@ table.data td.grp{border-left:1px solid var(--line2)}
 .scta .scta-h{margin:0;font-family:var(--sans,'IBM Plex Sans',system-ui,sans-serif);font-size:16px;font-weight:600;letter-spacing:-.018em;line-height:1.3;color:var(--ink,#16150F)}
 .scta p{margin:6px 0 0;font-size:14px;line-height:1.55;color:var(--mut,#6A6860);max-width:64ch}
 .scta-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
-.scta a.scta-b{min-height:44px;display:inline-flex;align-items:center;gap:8px;padding:0 16px;border-radius:3px;font-family:var(--sans,'IBM Plex Sans',system-ui,sans-serif);font-size:14.5px;font-weight:500;line-height:1;border:1px solid var(--acc,#1D6B4F);background:var(--white,#fff);color:var(--acc,#1D6B4F);text-decoration:none;white-space:nowrap}
+.scta a.scta-b{min-height:48px;display:inline-flex;align-items:center;gap:8px;padding:0 16px;border-radius:3px;font-family:var(--sans,'IBM Plex Sans',system-ui,sans-serif);font-size:14.5px;font-weight:500;line-height:1;border:1px solid var(--acc,#1D6B4F);background:var(--white,#fff);color:var(--acc,#1D6B4F);text-decoration:none;white-space:nowrap}
 .scta a.scta-b.alt{border-color:var(--line2,#DAD7CC);color:var(--ink,#16150F)}
 .scta a.scta-b.quiet{border-color:transparent;background:transparent;color:var(--mut,#6A6860);text-decoration:underline;text-underline-offset:3px}
 .scta a.scta-b.quiet:hover{border-color:var(--line2,#DAD7CC);color:var(--ink,#16150F)}
 .scta a.scta-b:hover{border-color:var(--ink,#16150F);color:var(--ink,#16150F)}
 .scta a:focus-visible{outline:2px solid var(--acc,#1D6B4F);outline-offset:2px;border-radius:3px}
-.scta a.scta-why{min-height:44px;display:inline-flex;align-items:center;padding:0 6px;font-family:var(--mono,'IBM Plex Mono',monospace);font-size:12.5px;color:var(--mut,#6A6860);border-bottom:0;text-decoration:underline;text-underline-offset:3px}
+.scta a.scta-why{min-height:48px;display:inline-flex;align-items:center;padding:0 6px;font-family:var(--mono,'IBM Plex Mono',monospace);font-size:12.5px;color:var(--mut,#6A6860);border-bottom:0;text-decoration:underline;text-underline-offset:3px}
 .scta-top{display:flex;gap:12px;align-items:center}
 .scta-top img{width:44px;height:44px;border-radius:50%;flex:none;border:1px solid var(--line,#E2DFD5);display:block;max-width:none}
 .scta-foot{max-width:1080px;margin:clamp(40px,5cqw,72px) auto 0;padding:0 20px}
@@ -313,7 +313,7 @@ table.data td.grp{border-left:1px solid var(--line2)}
 .scta-me{display:flex;gap:10px;align-items:center;margin-top:8px}
 .scta-me img{width:32px;height:32px;border-radius:50%;flex:none;border:1px solid var(--line,#E2DFD5);display:block;max-width:none}
 .scta .scta-me p{margin:0}
-.scta button.scta-x{min-height:44px;padding:0 6px;background:none;border:0;cursor:pointer;font-family:var(--mono,'IBM Plex Mono',monospace);font-size:12.5px;color:var(--mut,#6A6860);text-decoration:underline;text-underline-offset:3px}
+.scta button.scta-x{min-height:48px;padding:0 6px;background:none;border:0;cursor:pointer;font-family:var(--mono,'IBM Plex Mono',monospace);font-size:12.5px;color:var(--mut,#6A6860);text-decoration:underline;text-underline-offset:3px}
 .scta button.scta-x:focus-visible{outline:2px solid var(--acc,#1D6B4F);outline-offset:2px;border-radius:3px}
 @media (max-width:420px){.scta a.scta-b{white-space:normal;padding:8px 14px}}
   table.data thead th{font-size:12px}
@@ -333,7 +333,7 @@ table.data td.grp{border-left:1px solid var(--line2)}
 .case-stat{padding:22px 18px;border-right:1px solid var(--line)}.case-stat:last-child{border:0}
 .case-stat dt{font:500 clamp(30px,4vw,44px)/1 var(--mono);color:var(--acc)}.case-stat dd{margin:12px 0 0;font-size:14px;color:var(--mut)}
 .case-stats-note{font-size:13px;color:var(--mut);margin:12px 0 0;max-width:75ch}
-.case-toc{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:28px}.case-toc a{min-height:44px;display:inline-flex;align-items:center;font-size:14px}
+.case-toc{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:28px}.case-toc a{min-height:48px;display:inline-flex;align-items:center;font-size:14px}
 .case-body{max-width:74ch;margin:auto}.case-body h2{margin-bottom:20px;max-width:25ch}.case-body h3{margin:28px 0 10px}
 .case-body p{font-size:17px;line-height:1.72;margin:16px 0}.case-body ul,.case-body ol{padding-left:24px}.case-body li{padding:6px 0}
 .case-note{border-left:3px solid var(--acc);padding:4px 20px;margin:28px 0;background:#eef2eb}.case-note p{font-size:15px}
@@ -344,20 +344,21 @@ table.data td.grp{border-left:1px solid var(--line2)}
 .case-filters button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #a46711;outline-offset:4px}
 .case-results{font:13px/1.6 var(--mono);color:var(--mut);margin:14px 0}.case-examples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .example{padding:24px;background:var(--white);border:1px solid var(--line);border-radius:3px;min-width:0}.example[hidden]{display:none}
-.example h3{font-size:20px;line-height:1.3;margin:12px 0}.example h3 a{display:inline-block;min-height:44px;padding-block:6px;color:var(--ink);text-decoration-thickness:1px;text-underline-offset:4px}
+.example h3{font-size:20px;line-height:1.3;margin:12px 0}.example h3 a{display:inline-block;min-height:48px;padding-block:6px;color:var(--ink);text-decoration-thickness:1px;text-underline-offset:4px}
 .example p{font-size:15px;line-height:1.6;color:var(--mut)}.example .example-site{font:12px/1.5 var(--mono);overflow-wrap:anywhere;margin:0;color:var(--acc)}
 .example .example-date{font:13px/1.5 var(--mono);margin:18px 0 0;color:var(--mut)}
-.case-downloads{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:24px}.case-downloads a{min-height:44px;display:inline-flex;align-items:center;font-size:14px}
+.case-downloads{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:24px}.case-downloads a{min-height:48px;display:inline-flex;align-items:center;font-size:14px}
 .case-end{background:var(--ink);color:var(--paper);padding:36px;border-radius:3px}.case-end p{color:#d6d5cc}.case-end .btn-p{background:#e8eee3;color:var(--ink)}
 @media(max-width:640px){.case-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.case-stat:nth-child(2){border-right:0}.case-stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.case-examples{grid-template-columns:1fr}.case-stat{padding:20px 16px}.example{padding:22px 18px}.case-end{padding:26px 20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 </style><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "@id": "https://toolsthatrank.com/organic-search-case-study/#article", "headline": "19 published pages for organic search", "description": "Read an operator case study of 27 page attempts across 15 websites, with 19 published examples, eight held targets and a clear plan for measuring search traffic.", "mainEntityOfPage": "https://toolsthatrank.com/organic-search-case-study/", "datePublished": "2026-10-21T06:15:44+07:00", "dateModified": "2026-10-28", "author": {"@type": "Person", "name": "Michael Lip", "url": "https://github.com/theluckystrike"}, "publisher": {"@type": "Organization", "name": "ToolsThatRank", "url": "https://toolsthatrank.com/"}, "inLanguage": "en", "image": "https://toolsthatrank.com/og.png"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ToolsThatRank", "item": "https://toolsthatrank.com/"}, {"@type": "ListItem", "position": 2, "name": "Operator case study", "item": "https://toolsthatrank.com/organic-search-case-study/"}]}]}</script><script src="/site-analytics.js" defer></script>
+<style id="hcta-css">.hcta{display:inline-flex;align-items:center;min-height:48px;padding:0 14px;margin-left:auto;border-radius:3px;border:1px solid var(--acc,#1D6B4F);color:var(--acc,#1D6B4F);background:transparent;font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap}.hcta:hover{background:var(--acc,#1D6B4F);color:#F6F5F1}nav.top a{min-height:48px;display:inline-flex;align-items:center}.btn-s{border-color:#8C887C}@media (max-width:520px){header .in .hcta{order:2}header .in nav.top{order:3;width:100%}}@media (min-width:521px){header .in:has(nav.top a[href="/pricing/"]) .hcta{display:none}}</style>
 </head><body><a class="skip" href="#main">Skip to content</a><div class="frame"><header>
   <div class="in">
     <a class="brand" href="/"><span class="g" aria-hidden="true">&#9672;</span><span class="n">ToolsThatRank</span></a>
     <nav class="top" aria-label="Primary">
       <a href="/#build">the pipeline</a>
-      <a href="/pricing/" data-cta="organic_search_case_study_header_pricing">pricing</a>
+      <a href="/pricing/" data-cta="organic_search_case_study_header_pricing" id="organic_search_case_study_header_pricing">pricing</a>
       <a href="/#proof">proof</a>
       <a href="/#tools">shipped</a>
       <a href="/#how">method</a>
@@ -367,6 +368,7 @@ table.data td.grp{border-left:1px solid var(--line2)}
       <a href="/how-long-to-rank/">time to rank</a>
       <a class="gh" href="https://github.com/theluckystrike" target="_blank" rel="noopener">github <span aria-hidden="true">&#8599;</span></a>
     </nav>
+    <a class="hcta" href="/pricing/" data-cta="organic_search_case_study_header_cta" id="organic_search_case_study_header_cta">Pricing · $99</a>
   </div>
 </header><main id="main" tabindex="-1">
 <section class="in case-hero" aria-labelledby="case-title">
@@ -521,11 +523,11 @@ table.data td.grp{border-left:1px solid var(--line2)}
   <p>The site's <a href="/first-30-days-again/">earlier traffic study</a> and <a href="/ctr-by-position/">measured search data</a> are separate datasets. They aren't results for this October publishing batch.</p>
 </div></section>
 <section class="in sec bt"><div class="case-body">
-  <div class="case-end"><h2>Build the next useful page</h2><p>Pick one customer question, make the answer work, and keep the evidence. Then watch what the page earns in search. The next decision can come from that result.</p><div class="cta-row"><a class="btn-p" href="/get/">See the source and setup</a><a class="btn-s" style="color:#e8eee3;border-color:#aaa" href="/pricing/" data-cta="organic_search_case_study_pricing">Read the pricing</a></div></div>
+  <div class="case-end"><h2>Build the next useful page</h2><p>Pick one customer question, make the answer work, and keep the evidence. Then watch what the page earns in search. The next decision can come from that result.</p><div class="cta-row"><a class="btn-p" href="/get/">See the source and setup</a><a class="btn-s" style="color:#e8eee3;border-color:#aaa" href="/pricing/" data-cta="organic_search_case_study_pricing" id="organic_search_case_study_pricing">Read the pricing</a></div></div>
   <h3>How the count was checked</h3><p>The inventory combines the five-page run with the work identified on two other desktops. It includes the earlier five-page tool run and its later five-page follow-up, two five-target niche runs, and a two-target food and AI-search run. Release receipts supplied the dates; a fresh fetch checked all 19 public URLs.</p>
   <p>The downloadable ledger lists every counted URL. The eight held targets aren't in that ledger. Revised versions of a page, the case study you're reading, and unrelated pages already on the sites don't add to the total.</p>
 </div></section>
-</main><section aria-labelledby="scta-fh" class="scta-foot" data-support-cta="footer"><div class="scta"><div class="scta-top"><picture><source srcset="/assets/michael-128.webp" type="image/webp"/><img alt="Michael Lip" decoding="async" height="44" loading="lazy" src="/assets/michael-128.jpg" width="44"/></picture><h2 class="scta-h" id="scta-fh">Made by Michael, one person and a lot of coffee.</h2></div><p>If ToolsThatRank has helped you, you can buy me a coffee. It honestly makes my day, and I read every note that comes with one.</p><div class="scta-btns"><a class="scta-b" data-rail="paypal" href="https://paypal.me/najzzz/5USD" rel="noopener" target="_blank"><svg aria-hidden="true" fill="none" focusable="false" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M17 8h1a4 4 0 0 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><path d="M6 2v2M10 2v2M14 2v2"></path></svg><span>Buy me a coffee · $5 <small>via PayPal</small></span></a><a class="scta-b alt" data-rail="bmc" href="https://buymeacoffee.com/michaellip" rel="noopener" target="_blank">Card, any amount or monthly</a><a class="scta-b quiet" data-rail="github" href="https://github.com/sponsors/theluckystrike" rel="noopener" target="_blank"><span>Sponsor on GitHub <small>monthly or one-time</small></span></a><a class="scta-why" href="/support/">Why I ask</a></div></div></section><footer>
+</main><section aria-labelledby="scta-fh" class="scta-foot" data-support-cta="footer"><div class="scta"><div class="scta-top"><picture><source srcset="/assets/michael-128.webp" type="image/webp"/><img alt="Michael Lip" decoding="async" height="44" loading="lazy" src="/assets/michael-128.jpg" width="44"/></picture><h2 class="scta-h" id="scta-fh">Made by Michael, one person and a lot of coffee.</h2></div><p>If ToolsThatRank has helped you, you can buy me a coffee. It honestly makes my day, and I read every note that comes with one.</p><div class="scta-btns"><a class="scta-b" data-rail="paypal" href="https://paypal.me/najzzz/5USD" rel="noopener" target="_blank" data-cta="organic_search_case_study_tip_paypal_1" id="organic_search_case_study_tip_paypal_1"><svg aria-hidden="true" fill="none" focusable="false" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M17 8h1a4 4 0 0 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><path d="M6 2v2M10 2v2M14 2v2"></path></svg><span>Buy me a coffee · $5 <small>via PayPal</small></span></a><a class="scta-b alt" data-rail="bmc" href="https://buymeacoffee.com/michaellip" rel="noopener" target="_blank" data-cta="organic_search_case_study_tip_bmc_2" id="organic_search_case_study_tip_bmc_2">Card, any amount or monthly</a><a class="scta-b quiet" data-rail="github" href="https://github.com/sponsors/theluckystrike" rel="noopener" target="_blank" data-cta="organic_search_case_study_tip_sponsors_3" id="organic_search_case_study_tip_sponsors_3"><span>Sponsor on GitHub <small>monthly or one-time</small></span></a><a class="scta-why" href="/support/">Why I ask</a></div></div></section><footer>
   <div class="in">
     <div class="fr">
       <div class="l">
@@ -534,9 +536,10 @@ table.data td.grp{border-left:1px solid var(--line2)}
           <span style="font-size:14px;font-weight:600;letter-spacing:-.02em">ToolsThatRank</span>
         </div>
         <p>Release records and public pages back the publication counts in this case study.</p>
-        <p style="margin-top:8px">Support and refunds: <a href="mailto:support@toolsthatrank.com">support@toolsthatrank.com</a></p>
+        <p style="margin-top:8px">Support and refunds at <a href="mailto:support@toolsthatrank.com">support@toolsthatrank.com</a></p>
       </div>
       <nav aria-label="Footer">
+        <a href="/pricing/" data-cta="organic_search_case_study_footer_pricing" id="organic_search_case_study_footer_pricing">pricing, $99 once</a>
         <a href="https://mcp.zovo.one">MCP servers for Claude</a>
         <a href="/">home</a>
         <a href="/#proof">proof</a>

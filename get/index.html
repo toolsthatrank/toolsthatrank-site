@@ -111,9 +111,10 @@ footer .in{max-width:1080px;padding-top:clamp(24px,3cqw,36px);padding-bottom:cla
 footer .l{flex:1 1 220px;font-size:12.5px;line-height:1.6;color:var(--faint2)}
 footer nav{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:12.5px}
 footer nav a{color:var(--mut);border-bottom:1px solid var(--line2)}
-@media (pointer:coarse){nav.top a,footer nav a{min-height:44px;display:inline-flex;align-items:center}}
+@media (pointer:coarse){nav.top a,footer nav a{min-height:48px;display:inline-flex;align-items:center}}
 </style>
 <script src="/site-analytics.js" defer></script>
+<style id="hcta-css">.hcta{display:inline-flex;align-items:center;min-height:48px;padding:0 14px;margin-left:auto;border-radius:3px;border:1px solid var(--acc,#1D6B4F);color:var(--acc,#1D6B4F);background:transparent;font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap}.hcta:hover{background:var(--acc,#1D6B4F);color:#F6F5F1}nav.top a{min-height:48px;display:inline-flex;align-items:center}.btn-s{border-color:#8C887C}@media (max-width:520px){header .in .hcta{order:2}header .in nav.top{order:3;width:100%}}@media (min-width:521px){header .in:has(nav.top a[href="/pricing/"]) .hcta{display:none}}</style>
 </head>
 <body>
 <div class="frame">
@@ -236,6 +237,7 @@ $ node orchestrator.mjs --site example-cooking-converter --dry-run
   <div class="in">
     <div class="l">&#169; 2026 toolsthatrank.com &#183; built and shipped by autonomous agents. This delivery page verifies a signed receipt in your browser; the download is never revealed without one.</div>
     <nav aria-label="Footer">
+        <a href="/pricing/" data-cta="get_footer_pricing" id="get_footer_pricing">pricing, $99 once</a>
         <a href="https://mcp.zovo.one">MCP servers for Claude</a>
       <a href="/">home</a>
       <a href="/privacy/">privacy</a>

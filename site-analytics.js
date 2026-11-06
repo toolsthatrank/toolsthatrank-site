@@ -33,6 +33,10 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
   function get(k) { try { return w.localStorage.getItem(k); } catch (e) { return null; } }
   function put(k, v) { try { w.localStorage.setItem(k, v); } catch (e) {} }
   function del(k) { try { w.localStorage.removeItem(k); } catch (e) {} }
+  /* QA visits: ?traffic_type=internal tags this browser as internal (GA4 traffic_type), ?traffic_type=external clears it. */
+  var IQ = /[?&]traffic_type=(internal|external)(?:[&#]|$)/.exec(location.search);
+  if (IQ) { if (IQ[1] === 'internal') put('mr_internal', '1'); else del('mr_internal'); }
+  var INTERNAL = get('mr_internal') === '1';
   function stored() {
     try {
       var c = JSON.parse(get(KEY) || 'null');
@@ -78,6 +82,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     booted = true;
     gtag('js', new Date());
     var cfg = { send_page_view: true, page_location: clean(location.href), cookie_expires: TTL };
+    if (INTERNAL) cfg.traffic_type = 'internal';
     if (d.referrer) cfg.page_referrer = d.referrer.indexOf(location.origin + '/') === 0 ? clean(d.referrer) : d.referrer;
     gtag('config', ID, cfg);
     pending.forEach(function (x) { send(x[0], x[1], x[2]); });
@@ -149,7 +154,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     '.mrc .mrc-text{margin:0 0 12px;padding:0;color:#d6d3cb}' +
     '.mrc .mrc-text a{color:#fffdf7;text-decoration:underline;text-underline-offset:3px}' +
     '.mrc .mrc-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}' +
-    '.mrc .mrc-btn{-webkit-appearance:none;appearance:none;min-height:44px;margin:0;padding:10px 14px;border:1px solid rgba(255,255,255,.24);' +
+    '.mrc .mrc-btn{-webkit-appearance:none;appearance:none;min-height:48px;margin:0;padding:10px 14px;border:1px solid rgba(255,255,255,.24);' +
     'border-radius:999px;background:#212120;color:#fffdf7;font:inherit;font-weight:800;cursor:pointer}' +
     '.mrc .mrc-btn:hover{border-color:#5FBE8E}' +
     '.mrc .mrc-btn:focus-visible,.mrc .mrc-text a:focus-visible{outline:3px solid #5FBE8E;outline-offset:2px}' +
@@ -161,6 +166,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     '.mrc.mrc-light .mrc-title{color:#090909}.mrc.mrc-light .mrc-text{color:#55524b}.mrc.mrc-light .mrc-text a{color:#090909}' +
     '.mrc.mrc-light .mrc-btn{background:#f5f0e6;color:#090909;border-color:rgba(9,9,9,.24)}.mrc.mrc-light .mrc-btn:hover{border-color:#090909}' +
     '.mrc.mrc-light .mrc-btn:focus-visible,.mrc.mrc-light .mrc-text a:focus-visible{outline-color:#8d69ff}' +
+    '@media (max-width:759px){.mrc{padding:12px 14px;border-radius:16px;font-size:13.5px;line-height:1.4}.mrc .mrc-title{display:none}.mrc .mrc-text{margin:0 0 10px}.mrc .mrc-long{display:none}}' +
     '@keyframes mrc-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}' +
     '@media (prefers-reduced-motion:reduce){.mrc{animation:none}}' +
     '@media (forced-colors:active){.mrc,.mrc .mrc-btn{border:2px solid CanvasText}}';
@@ -197,7 +203,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     b.setAttribute('aria-labelledby', 'mrc-title');
     b.setAttribute('aria-describedby', 'mrc-text');
     b.innerHTML = '<p class="mrc-title" id="mrc-title">Analytics cookies</p>' +
-      '<p class="mrc-text" id="mrc-text">We use Google Analytics to see which posts bring people to ToolsThatRank and what they click on. ' +
+      '<p class="mrc-text" id="mrc-text">We use Google Analytics<span class="mrc-long"> to see which posts bring people to ToolsThatRank and what they click on</span>. ' +
       (now === 'gpc' ? 'Your browser sends a privacy signal, so it stays off here. ' : now === 'granted' ? 'It&#39;s on right now. ' :
         now === 'denied' ? 'It&#39;s off until you accept. ' : '') +
       'We don&#39;t use it for ads. <a href="/privacy/#analytics">How we use it</a></p>' +
@@ -361,7 +367,25 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     }
     if (HOME && !agencyCta && a.getAttribute('data-track')) track('cta_click', { placement: placement(a) });
   }
-  d.addEventListener('click', function (e) { try { onClick(e); } catch (err) {} }, true);
+  /* Fast click: if gtag.js has not loaded yet, an outbound CTA click would leave before the queued events go out.
+     Hold that navigation until the tag is ready, at most 1.2 s. New-tab and modified clicks are never held. */
+  function hold(e) {
+    if (gpc || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (booted ? w.google_tag_manager : (cc !== undefined || stored() === 'denied')) return;
+    var t = e.target; if (t && t.nodeType !== 1) t = t.parentElement;
+    var a = t && t.closest && t.closest('a[href]');
+    if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return;
+    if (!(STRIPE.test(a.href) || a.hasAttribute('data-cta'))) return;
+    if (a.origin === location.origin && a.pathname === location.pathname && a.hash) return;
+    e.preventDefault();
+    var href = a.href, t0 = Date.now();
+    (function wait() {
+      var ready = booted && w.google_tag_manager, gone = !booted && cc !== undefined;
+      if (ready || gone || Date.now() - t0 > 1200) setTimeout(function () { location.href = href; }, ready ? 150 : 0);
+      else setTimeout(wait, 50);
+    })();
+  }
+  d.addEventListener('click', function (e) { try { onClick(e); hold(e); } catch (err) {} }, true);
 
   var vids = typeof WeakMap === 'function' ? new WeakMap() : null;
   function vtitle(v) {
