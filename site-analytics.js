@@ -368,10 +368,11 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     if (HOME && !agencyCta && a.getAttribute('data-track')) track('cta_click', { placement: placement(a) });
   }
   /* Fast click: if gtag.js has not loaded yet, an outbound CTA click would leave before the queued events go out.
-     Hold that navigation until the tag is ready, at most 3 s. New-tab and modified clicks are never held. */
+     Hold that navigation until the tag is ready, at most 3 s. When it is ready, hold 150 ms so the batched hit is sent first. New-tab and modified clicks are never held. */
   function hold(e) {
     if (gpc || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    if (booted ? w.google_tag_manager : (cc !== undefined || stored() === 'denied')) return;
+    var ready = booted && w.google_tag_manager;
+    if (!booted && (cc !== undefined || stored() === 'denied')) return;
     var t = e.target; if (t && t.nodeType !== 1) t = t.parentElement;
     var a = t && t.closest && t.closest('a[href]');
     if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return;
@@ -379,6 +380,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     if (a.origin === location.origin && a.pathname === location.pathname && a.hash) return;
     e.preventDefault();
     var href = a.href, t0 = Date.now();
+    if (ready) { setTimeout(function () { location.href = href; }, 150); return; } // tag ready: 150 ms lets the batched hit leave
     try { d.documentElement.style.cursor = "progress"; } catch (x) {}
     (function wait() {
       var ready = booted && w.google_tag_manager, gone = !booted && cc !== undefined;
