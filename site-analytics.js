@@ -341,13 +341,13 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     var agencyCta = referral || gumroad || offer || STRIPE.test(href) || a.hasAttribute('data-mr-checkout');
     if (agencyCta) track('cta_click', {
       cta_target: referral ? 'toolsthatrank' : gumroad ? a.pathname.slice(3) : STRIPE.test(href) ? 'stripe' : a.hash.slice(1) || 'pricing',
-      placement: placement(a), page_path: location.pathname,
+      placement: placement(a), page_path: location.pathname, cta_id: clip(a.getAttribute('data-cta') || ''),
       link_text: clip(a.textContent), link_url: clip(clean(href))
     });
     if (STRIPE.test(href) || a.hasAttribute('data-mr-checkout')) {
       var slug = (/^https:\/\/buy\.stripe\.com\/([A-Za-z0-9]+)/i.exec(href) || [])[1], tt = slug && TTR[slug];
       if (tt) {
-        track('begin_checkout', { currency: 'USD', value: tt.price, items: ttrItem(tt), tier: tt.item_id, placement: placement(a) });
+        track('begin_checkout', { currency: 'USD', value: tt.price, items: ttrItem(tt), tier: tt.item_id, placement: placement(a), cta_id: clip(a.getAttribute('data-cta') || '') });
         return;
       }
       var plan = planOf(a, href), cp = { plan: plan, currency: 'USD', placement: placement(a) };
