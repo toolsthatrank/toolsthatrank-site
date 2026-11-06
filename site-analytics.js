@@ -95,6 +95,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
   function send(name, p, done) { try { gtag('event', name, p); if (done) done(); } catch (e) {} }
   function track(name, p, done) {
     var e = ext(p, { transport_type: 'beacon' });
+    if (w.__mrNav) { e.event_callback = w.__mrNav; e.event_timeout = 1000; w.__mrNav = null; }
     if (booted) send(name, e, done); else if (!gpc && pending.length < 50) pending.push([name, e, done]);
   }
   w.mrTrack = function (name, p) { if (typeof name === 'string' && name) track(name, p || {}); };
@@ -272,6 +273,8 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
 
   /* ---------- events ---------- */
   function placement(el) {
+    var cid = el.getAttribute && el.getAttribute('data-cta'), pm = cid && /_(header|hero|lede|card|table|tiers|top|mid|body|end|footer|offer|example|text|tip)(_|$)/.exec(cid);
+    if (pm) return pm[1];
     var p = el.closest('[data-mr-placement]'), nav = false;
     if (p) return clip(p.getAttribute('data-mr-placement'));
     if (el.getAttribute('data-track')) return clip(el.getAttribute('data-track'));
@@ -380,7 +383,10 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     if (a.origin === location.origin && a.pathname === location.pathname && a.hash) return;
     e.preventDefault();
     var href = a.href, t0 = Date.now();
-    if (ready) { setTimeout(function () { location.href = href; }, 150); return; } // tag ready: 150 ms lets the batched hit leave
+    if (ready) { // tag ready: leave when GA4 confirms the hit was sent (event_callback), at most 1.2 s
+      var went = false, go = function () { if (!went) { went = true; location.href = href; } };
+      w.__mrNav = go; setTimeout(go, 1200); return;
+    }
     try { d.documentElement.style.cursor = "progress"; } catch (x) {}
     (function wait() {
       var ready = booted && w.google_tag_manager, gone = !booted && cc !== undefined;
@@ -388,7 +394,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
       else setTimeout(wait, 50);
     })();
   }
-  d.addEventListener('click', function (e) { try { onClick(e); hold(e); } catch (err) {} }, true);
+  d.addEventListener('click', function (e) { try { hold(e); onClick(e); w.__mrNav = null; } catch (err) {} }, true);
 
   var vids = typeof WeakMap === 'function' ? new WeakMap() : null;
   function vtitle(v) {
