@@ -246,11 +246,11 @@ html{overflow-x:hidden}
   <p class="crumb"><a href="/">ToolsThatRank</a> / bulk data export</p>
   <p class="kicker">Calculator from Google's published prices</p>
   <h1>Search Console BigQuery export cost calculator</h1>
-  <p class="qas" style="margin:16px 0 0;font-size:16px;line-height:1.6;color:var(--body);max-width:62ch">The bulk data export itself is free: Google states there are no costs associated with Search Console to export the data. What you pay for is the BigQuery side. In the US and EU multi-regions, on-demand queries cost 6.25 dollars per TiB processed with the first 1 TiB per month free, and you pay for active logical storage at 0.02 dollars per GiB per month (0.01 dollars for long-term logical storage, after 90 days without a change) with the first 10 GiB free (prices fetched 2026-10-29). The 10 GiB free tier applies to active and long-term logical storage. Estimate both from those published prices. The free tiers apply per billing account, not per dataset or per table, and all other BigQuery use in that account shares them.</p>
+  <p class="qas" style="margin:16px 0 0;font-size:16px;line-height:1.6;color:var(--body);max-width:62ch">The bulk data export itself is free. Google states there are no costs associated with Search Console to export the data. What you pay for is the BigQuery side. In the US and EU multi-regions, on-demand queries cost 6.25 dollars per TiB processed with the first 1 TiB per month free, and you pay for active logical storage at 0.02 dollars per GiB per month (0.01 dollars for long-term logical storage, after 90 days without a change) with the first 10 GiB free (prices fetched 2026-10-29). The 10 GiB free tier applies to active and long-term logical storage. Estimate both from those published prices. The free tiers apply per billing account, not per dataset or per table, and all other BigQuery use in that account shares them.</p>
   <p class="stamp" style="margin:6px 0 0;font-size:13px;color:var(--faint)">Updated 2026-10-29 &middot; prices fetched 2026-10-29</p>
   <p class="lede">Enter the GiB of new rows the export appends each day, how many days of daily
     drops you keep, the dataset location, and how your queries use the data. The calculator
-    splits the dataset at the 90 day mark: partitions younger than 90 days bill at the active
+    splits the dataset at the 90 day mark. Partitions younger than 90 days bill at the active
     logical rate, older ones at the long-term rate, which is about half. Query cost uses the
     on-demand rate with the first 1 TiB per month free, rounds each query up to the nearest MB
     and applies the 10 MB minimum per query.</p>
@@ -284,7 +284,7 @@ html{overflow-x:hidden}
     </div>
     <div class="actions">
       <button class="btn-p" id="bq-calc" type="button">Calculate</button>
-      <button class="btn-s" id="bq-fill" type="button">Use the example: 1 GiB a day, 365 days, US, 50 GiB, 100 queries</button>
+      <button class="btn-s" id="bq-fill" type="button">Use the example of 1 GiB a day, 365 days, US, 50 GiB, 100 queries</button>
     </div>
     <p class="toolerr" id="bq-err" role="alert" hidden></p>
     <div class="toolout empty" id="bq-out" aria-live="polite">Enter the daily GiB, retention days, location and query load, then press Calculate.</div>
@@ -347,7 +347,7 @@ html{overflow-x:hidden}
     <pre style="margin:14px 0 0;overflow-x:auto;font:14px/1.5 var(--mono);background:var(--line4);border:1px solid var(--line);border-radius:3px;padding:12px">SELECT storage_tier, SUM(total_logical_bytes) AS logical_bytes
 FROM `PROJECT_ID.searchconsole.INFORMATION_SCHEMA.PARTITIONS`
 GROUP BY storage_tier;</pre>
-    <p>Google's efficiency post names several ways to control the bill. Among them: set a
+    <p>Google's efficiency post names several ways to control the bill. Among them, set a
     partition expiration so that old date partitions are deleted automatically; pre-aggregate
     each daily drop into one or more summary tables and point dashboards at those instead of
     the raw tables; and restrict the bytes billed per query, so that a query whose estimated
@@ -366,13 +366,13 @@ GROUP BY storage_tier;</pre>
     <p>The example inputs are not data from a real property. Enter your own numbers.</p>
   </div>
   <div class="srcs">
-    <a href="https://cloud.google.com/bigquery/pricing" rel="nofollow noopener" target="_blank">Google Cloud BigQuery pricing (US and Europe multi-regions: active logical 0.02 dollars per GiB per month, long-term logical 0.01, first 10 GiB free; on-demand queries 6.25 dollars per TiB, first 1 TiB free; physical storage prices on the same page)</a><br>
+    <a href="https://cloud.google.com/bigquery/pricing" rel="nofollow noopener" target="_blank">Google Cloud BigQuery pricing (US and Europe multi-regions, active logical 0.02 dollars per GiB per month, long-term logical 0.01, first 10 GiB free; on-demand queries 6.25 dollars per TiB, first 1 TiB free; physical storage prices on the same page)</a><br>
     <a href="https://support.google.com/webmasters/answer/12917991?hl=en" rel="nofollow noopener" target="_blank">Search Console table guidelines and reference (searchdata tables, data retention, anonymized query field)</a><br>
-    <a href="https://developers.google.com/search/blog/2023/02/bulk-data-export" rel="nofollow noopener" target="_blank">Google Search Central blog: bulk data export (daily export, searchdata tables, anonymized queries left out)</a><br>
+    <a href="https://developers.google.com/search/blog/2023/02/bulk-data-export" rel="nofollow noopener" target="_blank">Google Search Central blog, bulk data export (daily export, searchdata tables, anonymized queries left out)</a><br>
     <a href="https://developers.google.com/search/blog/2023/06/bigquery-efficiency-tips" rel="nofollow noopener" target="_blank">BigQuery efficiency tips (budget alerts, byte restrictions, pre-aggregation, partition expiration)</a><br>
-    <a href="https://support.google.com/webmasters/answer/12917675?hl=en" rel="nofollow noopener" target="_blank">Search Console help: start a new bulk data export (billing, dataset location, 14 day partition expiration, schema changes)</a><br>
+    <a href="https://support.google.com/webmasters/answer/12917675?hl=en" rel="nofollow noopener" target="_blank">Search Console help, start a new bulk data export (billing, dataset location, 14 day partition expiration, schema changes)</a><br>
     <a href="https://cloud.google.com/bigquery/docs/information-schema-partitions" rel="nofollow noopener" target="_blank">BigQuery INFORMATION_SCHEMA.PARTITIONS view (total_logical_bytes, storage_tier, example query)</a><br>
-    <a href="https://support.google.com/webmasters/answer/12919198?hl=en" rel="nofollow noopener" target="_blank">Search Console help: manage and monitor bulk data exports (valid billing configuration, partition expiration too short)</a><br>
+    <a href="https://support.google.com/webmasters/answer/12919198?hl=en" rel="nofollow noopener" target="_blank">Search Console help, manage and monitor bulk data exports (valid billing configuration, partition expiration too short)</a><br>
     <a href="https://cloud.google.com/bigquery/docs/storage_overview" rel="nofollow noopener" target="_blank">BigQuery storage overview (logical billing is the default model)</a>
    </div>
 </section>

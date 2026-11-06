@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Search Console dataState: fresh vs final data explained · ToolsThatRank</title>
+<title>Search Console dataState, fresh vs final data explained · ToolsThatRank</title>
 <meta name="description" content="dataState all includes fresh, still-processing rows that can change. final returns completed data only and is the default. hourly_all adds an hourly breakdown with partial data.">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="author" content="Michael Lip">
@@ -13,13 +13,13 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://toolsthatrank.com/search-console-datastate/">
 <meta property="og:site_name" content="ToolsThatRank">
-<meta property="og:title" content="Search Console dataState: fresh vs final data explained">
+<meta property="og:title" content="Search Console dataState, fresh vs final data explained">
 <meta property="og:description" content="dataState all includes fresh, still-processing rows that can change. final returns completed data only and is the default. hourly_all adds an hourly breakdown with partial data.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://toolsthatrank.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://toolsthatrank.com/og.png">
-<meta name="twitter:title" content="Search Console dataState: fresh vs final data explained">
+<meta name="twitter:title" content="Search Console dataState, fresh vs final data explained">
 <meta name="twitter:description" content="dataState all includes fresh, still-processing rows that can change. final returns completed data only and is the default. hourly_all adds an hourly breakdown with partial data.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -300,7 +300,7 @@ table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
       "@type": "WebPage",
       "@id": "https://toolsthatrank.com/search-console-datastate/#webpage",
       "url": "https://toolsthatrank.com/search-console-datastate/",
-      "name": "Search Console dataState: fresh vs final data explained",
+      "name": "Search Console dataState, fresh vs final data explained",
       "description": "dataState all includes fresh, still-processing rows that can change. final returns completed data only and is the default. hourly_all adds an hourly breakdown with partial data.",
       "inLanguage": "en",
       "datePublished": "2026-10-28",
@@ -385,7 +385,7 @@ table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
 <section class="in sec">
   <p class="crumb"><a href="/">ToolsThatRank</a> / measured data</p>
   <p class="kicker">Field reference, checked against the vendor doc</p>
-  <h1>Search Console dataState: why today's numbers still move</h1>
+  <h1>Search Console dataState and why today's numbers still move</h1>
   <p class="qas" style="margin:16px 0 0;font-size:16px;line-height:1.6;color:var(--body);max-width:62ch">dataState all returns fresh data that is still being processed, so recent rows can change. final returns completed data only, and it is the default when the field is omitted. hourly_all adds an hourly breakdown and marks it as partial.</p>
   <p class="stamp" style="margin:6px 0 0;font-size:13px;color:var(--faint)">Updated 2026-10-28</p>
   <p class="lede">A Search Console date range in the middle of today will not match the same range tomorrow.
@@ -409,14 +409,14 @@ table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
       </tbody>
     </table>
   </div>
-  <p>The reference states it in one sentence: if the value is <code>all</code>, "data will include fresh data".
+  <p>The reference states it in one sentence. If the value is <code>all</code>, "data will include fresh data".
     If it is <code>final</code>, or if the parameter is omitted, "the returned data will include only finalized data".</p>
 </section>
 
 <section class="bt sec in body">
   <h2>What the metadata object adds</h2>
   <p>When you ask for fresh data, the response can carry a metadata object that tells you where the
-    unstable part starts. One field matters for a date-grouped report: <code>first_incomplete_date</code>.</p>
+    unstable part starts. One field matters for a date-grouped report, <code>first_incomplete_date</code>.</p>
   <p>The reference defines it as "the first date for which the data is still being collected and processed".
     It is populated only when <code>dataState</code> is <code>all</code>, the request groups by date, and the
     range contains incomplete data. The doc adds that "all values after the

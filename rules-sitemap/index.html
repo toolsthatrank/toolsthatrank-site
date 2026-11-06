@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>rules_sitemap · Bazel rules for sitemap.xml and robots.txt · ToolsThatRank</title>
-<meta name="description" content="theluckystrike_rules_sitemap: pure-Starlark Bazel rules that generate sitemap.xml, a sitemap index and robots.txt, and fail the build when the output would be invalid.">
+<meta name="description" content="theluckystrike_rules_sitemap has pure-Starlark Bazel rules that generate sitemap.xml, a sitemap index and robots.txt, and fail the build when the output would be invalid.">
 <link rel="canonical" href="https://toolsthatrank.com/rules-sitemap/">
 <meta name="robots" content="index,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -255,11 +255,11 @@ html{overflow-x:hidden}
 <h1>rules_sitemap</h1>
 <p class="lede">Bazel rules that generate <code class="k">sitemap.xml</code>, a sitemap index and <code class="k">robots.txt</code> for a statically built site, and fail the build when the result would be invalid.</p>
 
-<p>Source: <a href="https://github.com/theluckystrike/rules_sitemap">github.com/theluckystrike/rules_sitemap</a>. Module name <code class="k">theluckystrike_rules_sitemap</code>. Pure Starlark: no toolchain, no host tools, no network access, and no transitive dependencies for consumers.</p>
+<p>Source code at <a href="https://github.com/theluckystrike/rules_sitemap">github.com/theluckystrike/rules_sitemap</a>. Module name <code class="k">theluckystrike_rules_sitemap</code>. Pure Starlark, with no toolchain, no host tools, no network access, and no transitive dependencies for consumers.</p>
 
 <h2>Why it exists</h2>
 <p>A sitemap is usually the last artefact in a static-site build and the least tested one. The failure mode is quiet. The file is served with HTTP&nbsp;200, the crawler parses what it can, and the entries it rejects simply never appear in the index. Nothing in the build went red.</p>
-<p>The three mistakes that cause it are all mechanical:</p>
+<p>The three mistakes that cause it are all mechanical.</p>
 <ul>
   <li>an unescaped <code class="k">&amp;</code> in a query string, which makes the document malformed XML;</li>
   <li>a <code class="k">Sitemap:</code> line in <code class="k">robots.txt</code> still pointing at the previous origin, because that one directive has to be an absolute URL;</li>
@@ -325,7 +325,7 @@ robots_txt(
 
 <h2>Tests</h2>
 <pre class="code">bazel test //...</pre>
-<p>19 tests: Starlark unit tests for the rendering helpers, golden byte-comparison tests for each rule, and one analysis test per rejected input in the table above. <code class="k">examples/site</code> is a standalone Bazel module that builds a three-page site and byte-compares both generated files against checked-in expected output.</p>
+<p>19 tests, made of Starlark unit tests for the rendering helpers, golden byte-comparison tests for each rule, and one analysis test per rejected input in the table above. <code class="k">examples/site</code> is a standalone Bazel module that builds a three-page site and byte-compares both generated files against checked-in expected output.</p>
 
 <h2>Scope</h2>
 <p>The rules deliberately do not crawl a directory of HTML files to discover pages. Which URLs belong in a sitemap is a routing decision only the site generator knows. Trailing slashes, pagination, canonical duplicates, <code class="k">noindex</code> pages. So the page list is an explicit input. Generate it from whatever produces your routes and pass it in.</p>
