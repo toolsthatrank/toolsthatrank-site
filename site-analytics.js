@@ -368,7 +368,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     if (HOME && !agencyCta && a.getAttribute('data-track')) track('cta_click', { placement: placement(a) });
   }
   /* Fast click: if gtag.js has not loaded yet, an outbound CTA click would leave before the queued events go out.
-     Hold that navigation until the tag is ready, at most 1.2 s. New-tab and modified clicks are never held. */
+     Hold that navigation until the tag is ready, at most 3 s. New-tab and modified clicks are never held. */
   function hold(e) {
     if (gpc || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     if (booted ? w.google_tag_manager : (cc !== undefined || stored() === 'denied')) return;
@@ -379,9 +379,10 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     if (a.origin === location.origin && a.pathname === location.pathname && a.hash) return;
     e.preventDefault();
     var href = a.href, t0 = Date.now();
+    try { d.documentElement.style.cursor = "progress"; } catch (x) {}
     (function wait() {
       var ready = booted && w.google_tag_manager, gone = !booted && cc !== undefined;
-      if (ready || gone || Date.now() - t0 > 1200) setTimeout(function () { location.href = href; }, ready ? 150 : 0);
+      if (ready || gone || Date.now() - t0 > 3000) setTimeout(function () { location.href = href; }, ready ? 150 : 0);
       else setTimeout(wait, 50);
     })();
   }
