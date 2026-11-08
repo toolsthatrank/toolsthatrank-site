@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search Console regex tester with RE2 check · ToolsThatRank</title>
+<meta name="description" content="Test a Search Console Custom (regex) filter on your own queries or URLs. It applies partial match and no case sensitivity, and it flags syntax that RE2 rejects.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="author" content="Michael Lip">
+<meta name="date" content="2026-11-08">
+<link rel="canonical" href="https://toolsthatrank.com/search-console-regex-tester/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2786%27%3E%E2%97%88%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://toolsthatrank.com/search-console-regex-tester/">
+<meta property="og:site_name" content="ToolsThatRank">
+<meta property="og:title" content="Search Console regex tester with RE2 check">
+<meta property="og:description" content="Search Console Custom (regex) filters use RE2 syntax, a partial match and no case sensitivity by default. Test your expression on your own queries and URLs before you paste it into a report.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://toolsthatrank.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://toolsthatrank.com/og.png">
+<meta name="twitter:title" content="Search Console regex tester with RE2 check">
+<meta name="twitter:description" content="Search Console Custom (regex) filters use RE2 syntax, a partial match and no case sensitivity by default. Test your expression on your own queries and URLs before you paste it into a report.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* == House styles, copied from the shipped article template == */
+:root{--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;--ink:#16150F;--body:#3B3A33;--mut:#6A6860;--faint:#6E6B61;--faint2:#6E6B61;--line:#E2DFD5;--line2:#DAD7CC;--line3:#ECEAE2;--line4:#F1EFE9;--paper:#F6F5F1;--white:#FFFFFF;--outer:#E9E7DF;--acc:#1D6B4F;--acc-br:#1D6B4F}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 1rem/1.6 var(--sans);color:var(--body);background:var(--paper)}
+a{color:var(--acc);text-decoration:none;border-bottom:1px solid rgba(29,107,79,.3)}
+a:hover{border-bottom-color:var(--acc)}
+code{font-family:var(--mono);font-size:1em;background:var(--line3);padding:1px 5px;border-radius:3px;color:var(--ink)}
+.frame{max-width:1080px;margin:0 auto;background:var(--white)}
+.in{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4cqw,56px)}
+.kicker{font-family:var(--mono);font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+header{position:sticky;top:0;z-index:20;background:rgba(246,245,241,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+header .in{display:flex;align-items:center;flex-wrap:wrap;gap:4px 18px;min-height:60px;padding-top:6px;padding-bottom:6px}
+.brand{display:inline-flex;align-items:center;gap:9px;color:var(--ink);border-bottom:0;font-weight:600;letter-spacing:-.02em}
+.brand .g{color:var(--acc)}
+nav.top{display:flex;flex-wrap:wrap;gap:2px 18px;font-family:var(--mono);font-size:.8125rem;margin-left:auto}
+nav.top a{color:var(--mut);border-bottom:0}
+nav.top a:hover{color:var(--ink)}
+nav.top a.gh{color:var(--ink)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:3px;z-index:99}
+.skip:focus{left:12px;top:12px}
+footer{background:var(--paper);border-top:1px solid var(--line)}
+footer .in{padding-top:clamp(28px,3.5cqw,44px);padding-bottom:clamp(28px,3.5cqw,44px)}
+.fr{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-start}
+.fr .l{flex:1 1 220px;min-width:0}
+.fr p{margin:10px 0 0;font-size:.7812rem;line-height:1.6;color:var(--faint2);max-width:42ch}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 28px;font-family:var(--mono);font-size:.7812rem}
+footer nav a{color:var(--mut);border-bottom:1px solid var(--line2)}
+.copy{margin-top:24px;padding-top:16px;border-top:1px solid var(--line3);font-family:var(--mono);font-size:.6875rem;color:var(--faint)}
+.sec{padding-top:clamp(30px,4cqw,52px);padding-bottom:clamp(26px,3.4cqw,44px)}
+.wht{background:var(--white)}
+.bt{border-top:1px solid var(--line)}
+h1{font-family:var(--sans);color:var(--ink);font-weight:600;line-height:1.1}
+h2{font-size:clamp(1.5rem,3cqw,2rem);font-weight:600;letter-spacing:-.025em;line-height:1.15;color:var(--ink)}
+h3{font-size:1.0625rem;font-weight:600;letter-spacing:-.015em;color:var(--ink)}
+.sec h1{font-size:clamp(1.8125rem,4.2cqw,2.875rem);line-height:1.08;letter-spacing:-.032em;max-width:24ch;margin:10px 0 0}
+body{font:400 1rem/1.6 var(--sans)}
+.lede{margin:18px 0 0;font-size:clamp(1.0625rem,1.9cqw,1.25rem);line-height:1.55;color:var(--body);max-width:60ch}
+.body p{font-size:1rem;line-height:1.7;color:var(--body);max-width:66ch;margin:14px 0 0}
+.body h2+p,.body h3+p{margin-top:12px}
+.body h3{margin-top:26px}
+.body ul{margin:14px 0 0;padding-left:22px;max-width:66ch}
+.body li{margin-top:8px;font-size:1rem;line-height:1.7}
+.body code{overflow-wrap:anywhere}
+.stamp{font-family:var(--mono);font-size:.875rem;color:var(--faint);letter-spacing:.04em;margin-top:14px}
+.crumb{font-family:var(--mono);font-size:.875rem;color:var(--faint);margin-bottom:10px}
+.crumb a{color:var(--mut);border-bottom-color:var(--line2)}
+.hline{margin-top:clamp(20px,2.6cqw,28px);font-size:.875rem;line-height:1.6;color:var(--mut)}
+.hline strong{color:var(--ink);font-weight:600}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(22px,2.8cqw,30px)}
+.btn-p,.btn-s{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:3px;font-size:.9375rem;font-weight:500;border-bottom:0}
+.btn-p{background:var(--acc);color:#F6F5F1;border:1px solid var(--acc)}
+.btn-p:hover{background:#175840;color:#fff;border-color:#175840}
+.btn-s{background:transparent;color:var(--ink);border:1px solid var(--line2)}
+.btn-s:hover{border-color:var(--ink);color:var(--ink)}
+.wrapx{overflow-x:auto;margin-top:22px;border:1px solid var(--line);border-radius:4px;background:var(--white)}
+table.data{border-collapse:collapse;width:100%;min-width:660px;font-size:.875rem}
+table.data caption{text-align:left;padding:14px 16px 0;font-size:.875rem;color:var(--mut);caption-side:top}
+table.data th,table.data td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line3)}
+table.data thead th{font-family:var(--mono);font-size:.875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:500;vertical-align:bottom;border-bottom:1px solid var(--line2)}
+table.data tbody th{font-family:var(--mono);font-size:.875rem;color:var(--ink);font-weight:600}
+table.data td{color:var(--body);vertical-align:top}
+table.data .num{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
+.tool{background:var(--white);border:1px solid var(--line);border-radius:4px;padding:clamp(18px,2.4cqw,26px);margin-top:22px}
+.tool label{display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:.875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.tool input,.tool select{font-family:var(--mono);font-size:1rem;padding:11px 12px;color:var(--ink);background:var(--paper);border:1px solid var(--line2);border-radius:3px;min-height:48px}
+.tool input:focus,.tool select:focus{border-color:var(--acc);background:var(--white)}
+.tool .row{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
+.tool .row label:first-child{flex:1 1 320px}
+.toolout{margin-top:18px;padding-top:16px;border-top:1px solid var(--line3);font-size:.9375rem;line-height:1.6}
+.toolout.empty{color:var(--mut);font-family:var(--mono);font-size:.8125rem}
+.toolerr{display:none;margin-top:12px;padding:10px 12px;background:#FDF2EE;border:1px solid #E8C4B4;border-radius:3px;font-family:var(--mono);font-size:.875rem;color:#9C3D18}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:12px;margin-top:14px}
+.tgrid div{background:var(--paper);border:1px solid var(--line3);border-radius:3px;padding:12px 13px}
+.tgrid .tk{display:block;font-family:var(--mono);font-size:.875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.tgrid b{display:block;margin-top:7px;font-size:1.3125rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.tgrid i{display:block;margin-top:4px;font-style:normal;font-family:var(--mono);font-size:.75rem;color:var(--mut)}
+.samples{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.samples button{font-family:var(--mono);font-size:.875rem;padding:8px 12px;min-height:44px;background:var(--paper);border:1px solid var(--line2);border-radius:3px;color:var(--mut);cursor:pointer}
+.samples button:hover{border-color:var(--acc);color:var(--acc)}
+.tool textarea{width:100%;font-family:var(--mono);font-size:1rem;padding:11px 12px;color:var(--ink);background:var(--paper);border:1px solid var(--line2);border-radius:3px;resize:vertical}
+.tool textarea:focus{border-color:var(--acc);background:var(--white)}
+.tool > label{margin-top:14px}
+.tnote{margin-top:10px;font-size:.875rem;line-height:1.6;color:var(--mut);max-width:64ch}
+.rowlist{margin:8px 0 0;padding-left:22px;font-family:var(--mono);font-size:.875rem;overflow-wrap:anywhere}
+.api{margin-top:10px;padding:12px;background:var(--paper);border:1px solid var(--line3);border-radius:3px;font-family:var(--mono);font-size:.875rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.tbl-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap;margin-top:24px}
+.mini{font-family:var(--mono);font-size:.75rem;color:var(--faint);letter-spacing:.04em}
+.notes{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px}
+@container (min-width:700px){.notes{grid-template-columns:repeat(2,1fr)}}
+.notes .nt{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:15px 16px}
+.notes .nt h3{margin-bottom:8px}
+.notes .nt p{margin:0;font-size:.875rem;line-height:1.6;color:var(--body)}
+.srcs{margin-top:20px;font-size:.875rem;line-height:1.9;color:var(--mut)}
+.srcs a{word-break:break-word}
+@media (max-width:640px){header{position:static}nav.top a{min-width:48px;justify-content:center;display:inline-flex;align-items:center}}
+@media (pointer:coarse){nav.top a,footer nav a{min-height:48px;display:inline-flex;align-items:center}}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--ink:#ECEAE2;--body:#CFCCC0;--mut:#ADAA9C;--faint:#A8A596;--faint2:#A8A596;--line:#34322A;--line2:#5A574C;--line3:#2A2822;--line4:#24231D;--paper:#14130F;--white:#1C1B16;--outer:#0F0E0B;--acc:#5FBE8E;--acc-br:#5FBE8E}header{background:rgba(20,19,15,.94)}.btn-p{color:#0E0F0B}.btn-p:hover{background:#7FD3A8;border-color:#7FD3A8;color:#0E0F0B}.btn-s{border-color:#7A766A}.toolerr{background:#3A1E18;border-color:#5A2E1C;color:#F0B0A0}.samples button{background:var(--white)}}
+</style>
+<style id="scta-css">
+/* Support CTA (tips). Outline buttons only: the filled green button stays on the paid pipeline. */
+[data-support-cta][hidden]{display:none!important}
+.scta{background:var(--white,#fff);border:1px solid var(--line,#E2DFD5);border-radius:4px;padding:16px 18px;margin-top:18px;color:var(--ink,#16150F);font:400 0.9375rem/1.55 var(--sans,'IBM Plex Sans',system-ui,sans-serif);text-align:left}
+.tool .scta,.wht .scta{background:var(--paper,#F6F5F1)}
+.scta-top{display:flex;align-items:center;gap:12px}
+.scta-top img{border-radius:50%;flex:none}
+.scta-h{font-size:0.9375rem;font-weight:600;margin:0;letter-spacing:-.01em}
+.scta p{margin:6px 0 0;font-size:0.875rem;line-height:1.55;color:var(--mut,#6A6860);max-width:64ch}
+.scta-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.scta-b{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--acc,#1D6B4F);color:var(--acc,#1D6B4F);background:transparent;border-radius:4px;padding:7px 12px;font-size:0.8125rem;text-decoration:none}
+.scta-b:hover{background:rgba(29,107,79,.08)}
+.scta-b small{font-weight:400;color:inherit;opacity:.75}
+.scta-b.alt{border-color:var(--line,#E2DFD5);color:var(--ink,#16150F)}
+.scta-b.alt:hover{background:rgba(0,0,0,.04)}
+.scta-b.quiet{border-color:var(--line,#E2DFD5);color:var(--mut,#6A6860)}
+.scta-b.quiet:hover{background:rgba(0,0,0,.04);color:var(--ink,#16150F)}
+.scta-why{font-size:0.75rem;color:var(--mut,#6A6860);align-self:center}
+.scta a:focus-visible{outline:2px solid var(--acc,#1D6B4F);outline-offset:2px;border-radius:3px}
+.scta-foot{max-width:1080px;margin:clamp(40px,5cqw,72px) auto 0;padding:0 20px}
+.scta-foot .scta{max-width:760px;margin:0}
+@media (max-width:640px){.scta-foot{padding:0 14px}footer small,footer .support,footer .support a,.srcs small,a.scta-b small,.scta-foot a.scta-b small{font-size:0.75rem}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://toolsthatrank.com/search-console-regex-tester/#webpage",
+      "url": "https://toolsthatrank.com/search-console-regex-tester/",
+      "name": "Search Console regex tester with RE2 check",
+      "description": "Search Console Custom (regex) filters use RE2 syntax, a partial match and no case sensitivity by default. Test your expression on your own queries and URLs before you paste it into a report.",
+      "inLanguage": "en",
+      "datePublished": "2026-11-08",
+      "dateModified": "2026-11-08",
+      "author": {"@id": "https://toolsthatrank.com/search-console-regex-tester/#author"},
+      "breadcrumb": {"@id": "https://toolsthatrank.com/search-console-regex-tester/#breadcrumb"},
+      "isBasedOn": [
+        {"@type": "CreativeWork", "name": "Performance report (Search results): Advanced filtering and comparison", "url": "https://support.google.com/webmasters/answer/17011165?hl=en"},
+        {"@type": "CreativeWork", "name": "RE2 syntax wiki", "url": "https://github.com/google/re2/wiki/Syntax"}
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://toolsthatrank.com/search-console-regex-tester/#author",
+      "name": "Michael Lip",
+      "url": "https://github.com/theluckystrike",
+      "jobTitle": "Independent full-stack consultant"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://toolsthatrank.com/search-console-regex-tester/#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "ToolsThatRank", "item": "https://toolsthatrank.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Search Console regex tester", "item": "https://toolsthatrank.com/search-console-regex-tester/"}
+      ]
+    }
+  ]
+}
+</script>
+<script src="/site-analytics.js" defer></script>
+<style id="shell-fix">:root{--outer:#E8E6DE}@media (prefers-color-scheme:dark){:root{--outer:#0F0E0B}}body{background:var(--outer)}.frame{width:100%;max-width:1180px;margin:0 auto;container-type:inline-size;background:var(--paper);color:var(--ink);border-left:1px solid var(--line2);border-right:1px solid var(--line2)}footer{margin-top:clamp(48px,6cqw,96px);background:var(--white)}nav.top a{border-bottom:1px solid var(--line2);white-space:nowrap;padding:2px 0}@media (max-width:640px){header{position:static!important;background:var(--paper)!important}}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:3px}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="frame">
+<header>
+  <div class="in">
+    <a class="brand" href="/"><span class="g" aria-hidden="true">&#9672;</span><span class="n">ToolsThatRank</span></a>
+    <nav class="top" aria-label="Primary">
+      <a href="/#build">the pipeline</a>
+      <a href="/pricing/" data-cta="search_console_regex_tester_header_pricing" id="search_console_regex_tester_header_pricing">pricing</a>
+      <a href="/#proof">proof</a>
+      <a href="/#tools">shipped</a>
+      <a href="/#how">method</a>
+      <a href="/ctr-by-position/">position bands</a>
+      <a href="/zero-click-pages/">click coverage</a>
+      <a href="/search-console-hidden-queries/">hidden queries</a>
+      <a href="/how-long-to-rank/">time to rank</a>
+      <a class="gh" href="https://github.com/theluckystrike" target="_blank" rel="noopener">github <span aria-hidden="true">&#8599;</span></a>
+    </nav>
+    <a class="hcta" href="/pricing/" data-cta="search_console_regex_tester_header_cta" id="search_console_regex_tester_header_cta" style="display:inline-flex;align-items:center;min-height:48px;padding:0 14px;margin-left:auto;border-radius:3px;border:1px solid var(--acc);color:var(--acc);background:transparent;font-size:.875rem;font-weight:500;border-bottom:1px solid var(--acc);white-space:nowrap">Pricing · $99</a>
+  </div>
+</header>
+<main id="main">
+<section class="in sec">
+  <p class="crumb"><a href="/">ToolsThatRank</a> / Search Console regex tester</p>
+  <p class="kicker" style="font-size:.875rem">Tester with rules quoted from Google's help page</p>
+  <h1>Search Console regex tester with an RE2 check</h1>
+  <p class="qas" style="margin:16px 0 0;font-size:1rem;line-height:1.6;color:var(--body);max-width:62ch">Custom (regex) filters in Search Console use RE2 syntax. The match is partial, so the expression can match anywhere in the query or URL unless you use ^ or $. The match is not case-sensitive unless the expression starts with (?-i). Paste your rows below, enter the expression and see which rows match. The tester stops on RE2 syntax that is not supported, such as lookahead.</p>
+  <p style="margin:10px 0 0;font-size:0.9375rem"><a href="/pricing/" data-cta="search_console_regex_tester_lede_pricing" id="search_console_regex_tester_lede_pricing" style="display:inline-flex;align-items:center;min-height:48px">See the pipeline, $99 once</a></p>
+  <p class="stamp">Updated 2026-11-08</p>
+  <p class="lede">A pattern that works in a JavaScript regex tester can fail in Search Console. The engine is RE2, the match is a partial match, and the default is case-insensitive. This page quotes the rules from Google's help page and lets you test an expression on your own queries and URLs in the browser.</p>
+  <p class="hline">By <a href="https://github.com/theluckystrike">Michael Lip</a>, an independent full-stack consultant who builds and runs ToolsThatRank.</p>
+</section>
+
+<section class="wht bt sec in body">
+  <h2>The rules, quoted from Google's documentation</h2>
+  <p>The quotes come from the Search Console help page <a href="https://support.google.com/webmasters/answer/17011165?hl=en">Performance report (Search results): Advanced filtering and comparison</a>, the <a href="https://github.com/google/re2/wiki/Syntax">RE2 syntax wiki</a> and the <a href="https://developers.google.com/webmaster-tools/v1/searchanalytics/query">Search Analytics API reference</a>.</p>
+  <div class="wrapx">
+    <table class="data">
+      <caption>Custom (regex) filter rules from the Search Console help page, the RE2 syntax wiki and the Search Analytics API reference.</caption>
+      <thead><tr><th scope="col">RULE</th><th scope="col">WHAT THE DOC SAYS</th><th scope="col">WHAT IT MEANS FOR YOUR FILTER</th></tr></thead>
+      <tbody>
+        <tr><td>Syntax</td><td>"The RE2 syntax is used."</td><td>The RE2 syntax page marks lookahead, lookbehind and backreferences NOT SUPPORTED. The tester names them and shows no result.</td></tr>
+        <tr><td>Match type</td><td>"Default matching is a 'partial match.' Your regular expression can match anywhere in the target string unless you use ^ (start of string) or $ (end of string)."</td><td><code>shoe</code> matches "shoes for men". <code>^shoe$</code> matches only the query "shoe".</td></tr>
+        <tr><td>Case</td><td>"Default regex matching is not case-sensitive. You can prepend (?-i) to the beginning of your expression for case-sensitive matches."</td><td><code>(?-i)AAA</code> matches /AAA but not /aaa. Use it when URL casing is meaningful.</td></tr>
+        <tr><td>Multiple values</td><td>"For multiple values, separate them with a vertical bar (|) and surround the whole expression with parentheses"</td><td><code>(red|blue|green)</code> follows that shape. Leave out the spaces that the help page shows around each |, because a space in the expression matches only a space. <code>(red | blue)</code> does not match the query "blue", because it looks for a space before blue.</td></tr>
+        <tr><td>API filters</td><td>The Search Analytics API reference describes <code>dimensionFilterGroups[].filters[]</code> with "Max length 4096 characters." Its operator <code>includingRegex</code> is "RE2 syntax regular expression that must be matched."</td><td>The help page for the report filter states no length limit. The API reference does not state a case rule for <code>includingRegex</code> or <code>excludingRegex</code>.</td></tr>
+        <tr><td>Exclude</td><td>"If you want to see all values except the specified values, choose Doesn't match regex"</td><td>The same expression inverts. Build it to match what you want gone.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The help page's example for case is that <code>(?-i)AAA</code> will match <code>https://example.com/AAA</code> but not <code>https://example.com/aaa</code>.</p>
+</section>
+
+<section class="bt sec in body">
+  <h2>Test a regex on your own rows</h2>
+  <p>Paste your queries or URLs, enter an expression, and the page lists the rows that match and the rows that do not match. Matching runs in JavaScript, not in RE2. The tester first checks the expression for RE2 syntax that is not supported. Then it translates the RE2 forms that it knows, such as <code>\z</code> and <code>[[:alpha:]]</code>. If it cannot check a construct, it says so and shows no result. RE2 itself is case-sensitive by default. The Search Console report filter is not case-sensitive by default, and the tester uses the report rule.</p>
+
+  <div class="tool" id="tester">
+    <label for="rows">Queries or URLs, one per line
+      <textarea id="rows" rows="8" spellcheck="false">Willow Tree nursery
+willowtree near me
+wilow tree price
+willow tee shirt
+weeping willow care</textarea>
+    </label>
+    <p class="tnote">The example rows are not data from a real property. The first three contain spelling variants from Google's 2021 blog post. The fourth row is a near miss that the blog's expression does not match. Paste your own rows. The tester removes spaces at the start and end of each line and reads the first 5,000 lines that are not empty. If a line has a tab (a pasted table), the tester uses the text before the first tab.</p>
+    <div class="row">
+      <label for="rx">Regular expression (RE2)
+        <input id="rx" type="text" spellcheck="false" autocomplete="off" value="willow tree|wilow tree|willowtree|willowtee">
+      </label>
+      <label for="mode">Mode
+        <select id="mode">
+          <option value="m">Matches regex</option>
+          <option value="n">Doesn't match regex</option>
+        </select>
+      </label>
+    </div>
+    <p class="tnote">The tester runs in your browser. It is a pre-check, so confirm the result in Search Console. It uses the report defaults: a partial match unless you use ^ or $, and no case sensitivity unless the expression starts with <code>(?-i)</code>. Before it runs a pattern, it looks for syntax that the <a href="https://github.com/google/re2/wiki/Syntax">RE2 syntax page</a> marks NOT SUPPORTED, for example lookahead, lookbehind, backreferences and possessive quantifiers. It also stops on repetition counts above 1000. The same page lists that limit as an implementation restriction. Then it names the construct and shows no result.</p>
+    <div class="toolerr" id="err" role="alert"></div>
+    <div aria-live="polite">
+      <div class="tgrid" id="stats" hidden>
+        <div><span class="tk">Rows that match</span><b id="st-m">0</b></div>
+        <div><span class="tk">Rows that do not match</span><b id="st-n">0</b></div>
+        <div><span class="tk">Rows tested</span><b id="st-t">0</b></div>
+      </div>
+      <p class="tnote" id="mode-note"></p>
+      <h3 id="h-m" hidden>Rows that match the expression</h3>
+      <ul class="rowlist" id="list-m"></ul>
+      <h3 id="h-n" hidden>Rows that do not match the expression</h3>
+      <ul class="rowlist" id="list-n"></ul>
+    </div>
+  </div>
+  <h3>Build a pattern</h3>
+  <div class="tool" id="builder">
+    <label for="b-brand">Brand variants, one per line
+      <textarea id="b-brand" rows="4" spellcheck="false">willow tree
+wilow tree
+willowtree
+willowtee</textarea>
+    </label>
+    <p class="tnote">The button joins the lines with | and escapes punctuation such as . + ( ).</p>
+    <div class="samples"><button type="button" id="b-brand-go">Use as alternation</button></div>
+    <label for="b-path">Site section path (* is any text)
+      <input id="b-path" type="text" spellcheck="false" autocomplete="off" value="shoes/*/green">
+    </label>
+    <div class="samples"><button type="button" id="b-path-go">Use as path pattern</button></div>
+    <p class="tnote">The two query intent buttons use the examples from Google's 2021 blog post.</p>
+    <div class="samples">
+      <button type="button" data-ex="what|how|when|why">what|how|when|why</button>
+      <button type="button" data-ex="buy|purchase|order">buy|purchase|order</button>
+    </div>
+    <label for="api-dim">Search Analytics API dimension
+      <select id="api-dim">
+        <option value="query">query</option>
+        <option value="page">page</option>
+      </select>
+    </label>
+    <p class="tnote">API filter for the expression in the tester. Matches regex gives the operator includingRegex. Doesn't match regex gives excludingRegex. The API reference does not state a case rule for these two operators.</p>
+    <pre class="api" id="api"></pre>
+  </div>
+</section>
+
+<section class="wht bt sec in body">
+  <h2>Four expressions to start from</h2>
+  <h3>Brand queries, exact set</h3>
+  <p><code>^(acme tools|acme inc)$</code> with anchors matches only those two queries, not "acme tools review". Without the anchors, the partial match keeps every query that contains either phrase.</p>
+  <h3>Question queries</h3>
+  <p><code>^(how|what|why|when|who|which|where)\b</code> catches queries that begin with a question word. The <code>\b</code> word boundary keeps "however" out and still matches the query "how". The doc's wildcard list covers <code>^</code> as the start-of-string anchor.</p>
+  <h3>URLs by directory</h3>
+  <p><code>^https://example\.com/blog/</code> keeps every URL under /blog/. The backslash makes the dot match only a dot. In "Doesn't match regex" mode the same expression removes the blog from the report.</p>
+  <h3>Case-sensitive paths</h3>
+  <p><code>(?-i)/Download/</code> matches /Download/ but not /download/. The doc's own example is <code>(?-i)AAA</code> on https://example.com/AAA. This expression uses the same prefix on a directory.</p>
+  <p>The filters above use alternation, anchors, an escaped dot, the <code>(?-i)</code> prefix and literal text. Test each one on your own rows above, then confirm it in Search Console.</p>
+</section>
+
+<section class="bt sec in body">
+  <h2>What this page cannot tell you</h2>
+  <ul>
+    <li>It does not run Google's RE2 engine. The tester implements the documented defaults in the browser; for the full grammar, the RE2 wiki is the reference.</li>
+    <li>It does not check a length limit. The help page for the report filter does not state a limit.</li>
+    <li>It cannot know which rows your property returns. The example rows are not your data.</li>
+    <li>A query filter in the report leaves out anonymized queries. Google's help page says that filtering by query or URL "can affect the report totals due to data truncation and the omission of anonymized queries." For the size of that gap, see <a href="/search-console-hidden-queries/">hidden queries in Search Console</a>.</li>
+  </ul>
+</section>
+
+<section class="wht bt sec in body" id="how-we-checked">
+  <h2>How this page was checked</h2>
+  <p>The rules table quotes the Search Console help page "Performance report (Search results): Advanced filtering and comparison", the RE2 syntax wiki and the Search Analytics API reference. The tester's defaults (partial match, not case-sensitive, <code>(?-i)</code> prefix) follow the help page. The list of constructs that the tester stops on comes from the NOT SUPPORTED lines and the repetition count restriction of the RE2 syntax wiki.</p>
+  <p class="srcs">Sources:<br>
+  <a href="https://support.google.com/webmasters/answer/17011165?hl=en">support.google.com &middot; Performance report (Search results): Advanced filtering and comparison</a><br>
+  <a href="https://developers.google.com/search/blog/2021/06/regex-negative-match?hl=en">developers.google.com &middot; Search Central blog, June 2021, regex negative match</a><br>
+  <a href="https://github.com/google/re2/wiki/Syntax">github.com/google/re2 &middot; RE2 syntax</a><br>
+  <a href="https://developers.google.com/webmaster-tools/v1/searchanalytics/query">developers.google.com &middot; Search Analytics query reference</a></p>
+  <div class="disc" style="border-left:2px solid var(--line2);padding-left:16px;margin-top:16px"><p style="margin:0 0 9px;font-size:.9062rem;line-height:1.6;color:var(--mut);max-width:62ch">The example rows are not data from a real property. The rules on this page come from the sources above. They are not measurements.</p></div>
+</section>
+
+<section class="bt sec in body" id="pipeline-offer">
+  <p class="kicker">The pipeline</p>
+  <h2>Build tool pages like this one on your own niche</h2>
+  <p>ToolsThatRank is the pipeline I build my tool sites with. You give it a niche and it builds a working tool, and it stops a page from shipping when a number will not verify. It costs $99 once, with a 14-day refund and no questions asked.</p>
+  <div class="cta-row">
+    <a class="btn-p" href="/pricing/" data-cta="search_console_regex_tester_end_pricing" id="search_console_regex_tester_end_pricing">See what $99 gets you</a>
+  </div>
+  <p>Michael</p>
+</section>
+</main>
+<section class="scta-foot" data-support-cta="footer" aria-labelledby="scta-fh"><div class="scta"><div class="scta-top"><picture><source srcset="/assets/michael-128.webp" type="image/webp"><img src="/assets/michael-128.jpg" width="44" height="44" loading="lazy" decoding="async" alt="Michael Lip"></picture><h2 class="scta-h" id="scta-fh">Made by Michael, one person and a lot of coffee.</h2></div><p>If ToolsThatRank has helped you, you can buy me a coffee. It honestly makes my day, and I read every note that comes with one.</p><div class="scta-btns"><a class="scta-b" data-rail="paypal" href="https://paypal.me/najzzz/5USD" target="_blank" rel="noopener" data-cta="search_console_regex_tester_tip_paypal_1" id="search_console_regex_tester_tip_paypal_1"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg><span>Buy me a coffee &middot; $5 <small>via PayPal</small></span></a><a class="scta-b alt" data-rail="bmc" href="https://buymeacoffee.com/michaellip" target="_blank" rel="noopener" data-cta="search_console_regex_tester_tip_bmc_2" id="search_console_regex_tester_tip_bmc_2">Card, any amount or monthly</a><a class="scta-b quiet" data-rail="github" href="https://github.com/sponsors/theluckystrike" target="_blank" rel="noopener" data-cta="search_console_regex_tester_tip_sponsors_3" id="search_console_regex_tester_tip_sponsors_3"><span>Sponsor on GitHub <small>monthly or one-time</small></span></a><a class="scta-why" href="/support/" data-cta="search_console_regex_tester_support_1" id="search_console_regex_tester_support_1">Why I ask</a></div></div></section>
+<footer>
+  <div class="in">
+    <div class="fr">
+      <div class="l">
+        <div style="display:flex;align-items:baseline;gap:7px">
+          <span style="color:var(--acc);font-size:0.875rem" aria-hidden="true">&#9672;</span>
+          <span style="font-size:0.875rem;font-weight:600;letter-spacing:-.02em">ToolsThatRank</span>
+        </div>
+        <p style="font-size:.875rem">The rules on this page are quoted from Google's documentation. The tester runs in your browser and is a pre-check.</p>
+        <p style="margin-top:8px">Support and refunds at <a href="mailto:support@toolsthatrank.com" data-cta="search_console_regex_tester_ttr_link_2" id="search_console_regex_tester_ttr_link_2">support@toolsthatrank.com</a></p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="/pricing/" data-cta="search_console_regex_tester_footer_pricing" id="search_console_regex_tester_footer_pricing">pricing, $99 once</a>
+        <a href="https://mcp.zovo.one">MCP servers for Claude</a>
+        <a href="/">home</a>
+        <a href="/#proof">proof</a>
+        <a href="/#how">method</a>
+        <a href="/privacy/">privacy</a>
+        <a href="/privacy/#analytics" data-mr-consent-open>cookie settings</a>
+        <a href="/terms/">terms</a>
+        <a href="mailto:support@toolsthatrank.com" data-cta="search_console_regex_tester_ttr_link_3" id="search_console_regex_tester_ttr_link_3">support</a>
+        <a href="https://github.com/theluckystrike" target="_blank" rel="noopener">github</a>
+      <a href="/support/" data-cta="search_console_regex_tester_support_4" id="search_console_regex_tester_support_4">why I ask for tips</a>
+</nav>
+    </div>
+    <div class="copy">&copy; 2026 toolsthatrank.com &middot; measured, not asserted</div>
+  </div>
+</footer>
+</div>
+<script>
+(function(){
+  'use strict';
+  var MAX_ROWS=5000, TIME_LIMIT_MS=2000;
+  var POSIX={alnum:'0-9A-Za-z',alpha:'A-Za-z',ascii:'\\x00-\\x7F',blank:'\\t ',cntrl:'\\x00-\\x1F\\x7F',digit:'0-9',graph:'!-~',lower:'a-z',print:' -~',punct:'!-\\/:-@\\[-`{-~',space:'\\t\\n\\x0B\\f\\r ',upper:'A-Z',word:'0-9A-Za-z_',xdigit:'0-9A-Fa-f'};
+  var BAD_ESC={g:'\\g',k:'\\k (named backreference)',G:'\\G',Z:'\\Z',K:'\\K',R:'\\R',X:'\\X',e:'\\e',c:'\\c (control character)',u:'\\u',l:'\\l',L:'\\L',U:'\\U',N:'\\N',h:'\\h',H:'\\H',V:'\\V'};
+  var BAD_GROUP=[['(?<=','lookbehind (?<='],['(?<!','lookbehind (?<!'],['(?=','lookahead (?='],['(?!','lookahead (?!'],['(?>','the atomic group (?>'],['(?#','the comment (?#'],['(?|','branch reset (?|'],["(?'",'the named group (?\'name\''],['(?P=','the named backreference (?P='],['(?P>','the recursive call (?P>'],['(?R','the recursive call (?R)'],['(?&','the recursive call (?&'],['(?C','the callout (?C']];
+  var SYNTAX='^$\\.*+?()[]{}|/';
+  function unsup(name){return {ok:false,kind:'unsupported',msg:'RE2 does not support '+name+'. Search Console uses RE2, so the filter cannot use it. No result is shown.'};}
+  function cannot(name){return {ok:false,kind:'cannot',msg:'This tester cannot check '+name+'. RE2 may accept it. Test the expression in Search Console. No result is shown.'};}
+  function escLit(s,inClass){var o='';for(var k=0;k<s.length;k++){var ch=s[k];o+=(SYNTAX.indexOf(ch)>=0||(inClass&&ch==='-'))?'\\'+ch:ch;}return o;}
+  /* RE2 check and translation to a JavaScript source with the u flag. */
+  function toJs(input){
+    var p=input,flags='iu',out='',i=0,inClass=false,m,depth=[1],last=1,prev;
+    if(p.slice(0,5)==='(?-i)'){flags='u';p=p.slice(5);}
+    else if(p.slice(0,4)==='(?i)'){p=p.slice(4);}
+    var n=p.length;
+    while(i<n){
+      var c=p[i];
+      if(!inClass){prev=last;last=1;}
+      if(c==='\\'){
+        if(i+1>=n)return {ok:false,kind:'invalid',msg:'The expression ends with one backslash. Add the character to escape. No result is shown.'};
+        var d=p[i+1];
+        if(d==='Q'){
+          if(inClass)return cannot('\\Q...\\E inside [ ]');
+          var end=p.indexOf('\\E',i+2),lit=end<0?p.slice(i+2):p.slice(i+2,end);
+          out+=escLit(lit,false);i=end<0?n:end+2;continue;
+        }
+        if(d>='1'&&d<='9'){
+          if(d<='7'&&i+2<n&&p[i+2]>='0'&&p[i+2]<='7')return cannot('an octal escape');
+          return unsup('the backreference \\'+d);
+        }
+        if(d==='0')return cannot('an octal escape');
+        if(BAD_ESC.hasOwnProperty(d))return unsup(BAD_ESC[d]);
+        if('dDwW'.indexOf(d)>=0){out+='\\'+d;i+=2;continue;}
+        if(d==='b'||d==='B'){if(inClass)return cannot('\\'+d+' inside [ ]');out+='\\'+d;i+=2;continue;}
+        if(d==='s'){out+=inClass?'\\t\\n\\f\\r ':'[\\t\\n\\f\\r ]';i+=2;continue;}
+        if(d==='S'){if(inClass)return cannot('\\S inside [ ]');out+='[^\\t\\n\\f\\r ]';i+=2;continue;}
+        if('tnrf'.indexOf(d)>=0){out+='\\'+d;i+=2;continue;}
+        if(d==='a'){out+='\\x07';i+=2;continue;}
+        if(d==='v'){out+='\\x0B';i+=2;continue;}
+        if(d==='z'||d==='A'){if(inClass)return cannot('\\'+d+' inside [ ]');out+=d==='z'?'$':'^';i+=2;continue;}
+        if(d==='x'){
+          if(p[i+2]==='{'){m=/^\{([0-9A-Fa-f]{1,6})\}/.exec(p.slice(i+2));if(!m||parseInt(m[1],16)>0x10FFFF)return cannot('this \\x{...} escape');out+='\\u{'+m[1]+'}';i+=2+m[0].length;continue;}
+          m=/^[0-9A-Fa-f]{2}/.exec(p.slice(i+2));if(!m)return cannot('this \\x escape');out+='\\x'+m[0];i+=4;continue;
+        }
+        if(d==='p'||d==='P')return cannot('Unicode classes such as \\pL');
+        if(d==='C')return cannot('\\C');
+        if(/[!-\/:-@\[-`{-~]/.test(d)){out+=escLit(d,inClass);i+=2;continue;}
+        return cannot('the escape \\'+d);
+      }
+      if(inClass){
+        if(c==='['){
+          m=/^\[:(\^?)([a-z]+):\]/.exec(p.slice(i));
+          if(m){if(m[1]||!POSIX.hasOwnProperty(m[2]))return cannot(m[0]);out+=POSIX[m[2]];i+=m[0].length;continue;}
+          out+='\\[';i++;continue;
+        }
+        if(c===']'){inClass=false;out+=']';i++;continue;}
+        out+=c;i++;continue;
+      }
+      if(c==='['){
+        inClass=true;out+='[';i++;
+        if(p[i]==='^'){out+='^';i++;}
+        if(p[i]===']'){out+='\\]';i++;}
+        continue;
+      }
+      if(c===']'||c==='}'){out+='\\'+c;i++;continue;}
+      if(c==='('&&p[i+1]==='?'){
+        for(var g=0;g<BAD_GROUP.length;g++){if(p.substr(i,BAD_GROUP[g][0].length)===BAD_GROUP[g][0])return unsup(BAD_GROUP[g][1]);}
+        if(p.substr(i,4)==='(?P<'){out+='(?<';i+=4;depth.push(1);continue;}
+        if(p.substr(i,3)==='(?:'||(p.substr(i,3)==='(?<'&&p[i+3]!=='='&&p[i+3]!=='!')){out+=p.substr(i,3);i+=3;depth.push(1);continue;}
+        return cannot('the flag group '+(/^\(\?[^)]*\)?/.exec(p.slice(i))||[''])[0]+' inside the expression');
+      }
+      if(c==='{'){
+        m=/^\{(\d+)(,(\d*))?\}/.exec(p.slice(i));
+        if(!m){out+='\\{';i++;continue;}
+        if(+m[1]>1000||(m[3]&&+m[3]>1000))return unsup('repetition counts above 1000 ('+m[0]+')');
+        var tot=Math.max(1,m[3]?+m[3]:+m[1])*prev;
+        if(tot>1000)return unsup('nested repetition counts that multiply to more than 1000');
+        last=tot;depth[depth.length-1]=Math.max(depth[depth.length-1],tot);
+        if(p[i+m[0].length]==='+')return unsup('the possessive quantifier '+m[0]+'+');
+        out+=m[0];i+=m[0].length;continue;
+      }
+      if((c==='*'||c==='+'||c==='?')&&p[i+1]==='+')return unsup('the possessive quantifier '+c+'+');
+      if(c==='.'){out+='[^\\n]';i++;continue;}
+      if(c==='('){depth.push(1);}
+      else if(c===')'&&depth.length>1){last=depth.pop();depth[depth.length-1]=Math.max(depth[depth.length-1],last);}
+      else if(c==='*'||c==='+'||c==='?'){last=prev;}
+      out+=c;i++;
+    }
+    try{new RegExp(out,flags);}catch(e){return {ok:false,kind:'invalid',msg:'This browser cannot read the expression ('+e.message+'). Check it against the RE2 syntax. No result is shown.'};}
+    return {ok:true,source:out,flags:flags};
+  }
+  function readRows(text){
+    var all=String(text).split(/\r\n|\r|\n/),rows=[],seen=0;
+    for(var k=0;k<all.length;k++){
+      var r=all[k],t=r.indexOf('\t');if(t>=0)r=r.slice(0,t);
+      r=r.trim();if(r==='')continue;seen++;
+      if(rows.length<MAX_ROWS)rows.push(r);
+    }
+    return {rows:rows,seen:seen};
+  }
+  var WORKER_SRC='onmessage=function(e){var re=new RegExp(e.data.s,e.data.f);postMessage(e.data.r.map(function(x){return re.test(x);}));};';
+  function matchRows(t,rows,cb){
+    if(typeof Worker==='function'&&typeof Blob==='function'&&typeof URL!=='undefined'&&URL.createObjectURL){
+      try{
+        var w=new Worker(URL.createObjectURL(new Blob([WORKER_SRC],{type:'text/javascript'}))),done=false;
+        var timer=setTimeout(function(){if(done)return;done=true;w.terminate();cb(null);},TIME_LIMIT_MS);
+        w.onmessage=function(e){if(done)return;done=true;clearTimeout(timer);w.terminate();cb(e.data);};
+        w.onerror=function(){if(done)return;done=true;clearTimeout(timer);w.terminate();cb(null);};
+        w.postMessage({s:t.source,f:t.flags,r:rows});return;
+      }catch(e){}
+    }
+    var re=new RegExp(t.source,t.flags);cb(rows.map(function(x){return re.test(x);}));
+  }
+  function escRe2(s){return s.replace(/[\\.+*?()|\[\]{}^$]/g,'\\$&');}
+  var $=function(id){return document.getElementById(id);};
+  var rowsIn=$('rows'),rxIn=$('rx'),modeIn=$('mode'),dimIn=$('api-dim'),err=$('err'),stats=$('stats'),api=$('api');
+  var token=0;
+  function clearOut(){stats.hidden=true;$('h-m').hidden=true;$('h-n').hidden=true;$('list-m').textContent='';$('list-n').textContent='';$('mode-note').textContent='';}
+  function showErr(msg){err.textContent=msg;err.style.display='block';}
+  function fill(list,items){var ul=$(list);ul.textContent='';for(var k=0;k<items.length;k++){var li=document.createElement('li');li.textContent=items[k];ul.appendChild(li);}}
+  function run(){
+    var my=++token,raw=rxIn.value,neg=modeIn.value==='n';
+    err.style.display='none';err.textContent='';clearOut();
+    if(raw===''){api.textContent='Enter an expression.';showErr('Enter an expression. No result is shown.');return;}
+    var t=toJs(raw);
+    if(!t.ok){api.textContent='Fix the expression first.';showErr(t.msg);return;}
+    api.textContent=JSON.stringify({dimensionFilterGroups:[{filters:[{dimension:dimIn.value,operator:neg?'excludingRegex':'includingRegex',expression:raw}]}]},null,2);
+    var rr=readRows(rowsIn.value);
+    if(rr.rows.length===0){showErr('Paste one or more queries or URLs, one per line. No result is shown.');return;}
+    matchRows(t,rr.rows,function(res){
+      if(my!==token)return;
+      if(res===null){showErr('The expression ran longer than '+(TIME_LIMIT_MS/1000)+' seconds on these rows, so the tester stopped it. No result is shown.');return;}
+      var yes=[],no=[];
+      for(var k=0;k<res.length;k++){(res[k]?yes:no).push(rr.rows[k]);}
+      $('st-m').textContent=String(yes.length);$('st-n').textContent=String(no.length);$('st-t').textContent=String(rr.rows.length);
+      fill('list-m',yes);fill('list-n',no);
+      $('h-m').hidden=false;$('h-n').hidden=false;stats.hidden=false;
+      $('mode-note').textContent=(neg?"Doesn't match regex keeps the "+no.length+(no.length===1?' row that does not match.':' rows that do not match.'):'Matches regex keeps the '+yes.length+(yes.length===1?' row that matches.':' rows that match.'))+(rr.seen>MAX_ROWS?' The tester read the first '+MAX_ROWS+' of '+rr.seen+' rows.':'');
+    });
+  }
+  [rowsIn,rxIn].forEach(function(x){x.addEventListener('input',run);});
+  [modeIn,dimIn].forEach(function(x){x.addEventListener('change',run);});
+  $('b-brand-go').addEventListener('click',function(){
+    var seen={},parts=[];String($('b-brand').value).split(/\r\n|\r|\n/).forEach(function(s){s=s.trim();if(s&&!seen[s.toLowerCase()]){seen[s.toLowerCase()]=1;parts.push(escRe2(s));}});
+    if(parts.length){rxIn.value=parts.join('|');run();}
+  });
+  $('b-path-go').addEventListener('click',function(){
+    var s=String($('b-path').value).trim();
+    if(s){rxIn.value=s.split('*').map(escRe2).join('.*');run();}
+  });
+  var ex=document.querySelectorAll('#builder button[data-ex]');
+  for(var j=0;j<ex.length;j++){ex[j].addEventListener('click',function(){rxIn.value=this.getAttribute('data-ex');run();});}
+  window.addEventListener('pageshow',function(e){if(e.persisted)run();});
+  run();
+})();
+</script>
+<script src="/assets/js/ttr-ui.js" defer></script>
+</body>
+</html>
