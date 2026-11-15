@@ -322,7 +322,7 @@ table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
           "name": "Do I need the vetting tier?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No, and most buyers do not. Take the $99 tier if you already have a niche in mind or you are happy to pick one and find out. The vetting tier earns its price in one case, when you are about to sink real hours into a topic and want somebody who has run this 34 times to tell you first whether the topic is worth the hours. You can also come back for it later. The $279 link stays open to people who already bought at $99, and I credit the $99 you already paid."
+            "text": "No, and most people do not. Take the $99 tier if you already have a niche in mind or you are happy to pick one and find out. The vetting tier earns its price in one case, when you are about to sink real hours into a topic and want somebody who has run this 34 times to tell you first whether the topic is worth the hours. You can also come back for it later. The $279 link stays open to people who already bought at $99, and I credit the $99 you already paid."
           }
         },
         {
@@ -331,6 +331,46 @@ table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Fourteen days, no questions, no conditions, on both paid tiers. The window runs from the day you pay. On the vetting tier it runs from the day you pay too, not from the day the review lands, so if the review is slow the window is still yours. Refunds go back to the card Stripe charged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I see something it built before I pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Six live sites are linked in the proof block on this page, among them ukmoneycalc.com and lakelevelnow.com. The case study links 19 more published pages. Open them and check any figure against the source it cites."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to write code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You need to be comfortable in a terminal. You run commands with Node 18.17 or newer, edit a config file and deploy static files to your own hosting. You do not need to write the pipeline code yourself. The bundled offline example runs with no API key, so you can see a full run before you spend anything on a model."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it cost to run after the $99?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Model usage, domains and hosting are yours and are billed by those providers, not by me. The offline stub costs nothing. The cheaper HTTP providers cost a fraction of a dollar per build. There is no subscription from ToolsThatRank."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who do I pay, and what shows on my statement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You pay on a Stripe checkout page, in US dollars, one time. The statement line reads AUTOM8 LLC, the trading name of the seller. The $99 download opens at /get/ as soon as Stripe confirms the payment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I am not ready to buy. Can I ask first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Use the question form on this page or write to support@toolsthatrank.com. A person replies by email. Nothing is sold to you from that address."
           }
         }
       ]
@@ -361,6 +401,35 @@ table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
 <style id="r2-fit">@media (max-width:760px){table{display:block;overflow-x:auto;max-width:100%;min-width:0!important}pre{max-width:100%;overflow-x:auto}main a,main code,footer a,.prose,p{overflow-wrap:anywhere}.scta-btns,.scta-b{flex-wrap:wrap}.scta a.scta-b,a.scta-b,.scta-b a{white-space:normal;height:auto;min-height:48px}[class*="stat"]>*,.grid>*{min-width:0}}</style>
 <style id="r2-dark">@media (prefers-color-scheme:dark){html:root{color-scheme:dark;--ink:#ECEAE2;--body:#CFCCC0;--mut:#ADAA9C;--faint:#A8A596;--faint2:#A8A596;--line:#34322A;--line2:#5A574C;--line3:#2A2822;--line4:#24231D;--paper:#14130F;--white:#1C1B16;--outer:#0F0E0B;--acc:#5FBE8E;--acc-br:#5FBE8E}header{background:rgba(20,19,15,.94)!important}.btn-p,.btn-p:visited{color:#0E0F0B!important}.btn-p:hover{background:#7FD3A8!important;border-color:#7FD3A8!important;color:#0E0F0B!important}.hcta:hover{color:#0E0F0B}.btn-s{border-color:#7A766A}.lrow.held,.lrow.hold,.lrow.no{background:#2A2414!important}.drk,pre.term,.case-end,.legal pre.code{background:#0C0B08!important}.case-end{color:#ECEAE2!important}.case-end .btn-p{background:#e8eee3!important;color:#16150F!important}#build,[style*="linear-gradient(180deg,#EDF4F0"]{background:var(--paper)!important}.cmp li.me,table.data tr.deep,.case-note{background:#1F2620!important}.eyebrow{background:transparent!important}.tag.live,.pill.ok,.chip.ok{background:#1E3328!important;color:#9FE0BC!important}.tag.hold,.pill.wip,.chip.wait{background:#3A3018!important;color:#E8C77A!important}.chip.bad,.toolerr{background:#3A1E18!important;color:#F0B0A0!important}::selection{background:#2E4A3A}}</style>
 <style id="r2-ttr5">@media (max-width:640px){header{position:static!important;background:var(--paper)!important}}#cbp-go{min-height:48px!important}nav.top a{min-width:48px;justify-content:center}</style>
+<style id="s2-ttr" data-cro="sprint-20261115-ttr-css">
+.s2-proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin-top:clamp(20px,2.6cqw,30px)}
+.s2-box{background:var(--white);border:1px solid var(--line);border-radius:3px;padding:clamp(18px,2.4cqw,24px)}
+.s2-box h3{margin:0 0 10px}
+.s2-sites{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.s2-sites li{font-size:0.9062rem;line-height:1.45;color:var(--mut)}
+.s2-sites li a{font-family:var(--mono);font-size:0.875rem;font-weight:500}
+.s2-files{margin:0;padding-left:18px;font-size:0.9062rem;line-height:1.55;color:var(--mut)}
+.s2-files li{margin:4px 0}
+.s2-sha{font-family:var(--mono);font-size:0.7188rem;overflow-wrap:anywhere;color:var(--ink);background:var(--line4);border:1px solid var(--line);border-radius:3px;padding:6px 8px;margin-top:8px;display:block}
+.s2-note{margin:14px 0 0;font-size:0.875rem;color:var(--faint2);max-width:72ch}
+.s2-mcards{display:none}
+@media (max-width:640px){.s2-mcards + .cta-row{display:none}}
+.s2-mc{background:var(--white);border:1px solid var(--line);border-radius:3px;padding:16px;margin-top:12px}
+.s2-mc.rec{border-color:var(--acc)}
+.s2-mc h3{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.s2-mc h3 .pr{font-family:var(--mono);font-size:1.25rem}
+.s2-mc dl{margin:10px 0 0;display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:0.875rem}
+.s2-mc dt{color:var(--mut)} .s2-mc dd{margin:0;text-align:right;color:var(--ink)}
+.s2-mc .btn-p,.s2-mc .btn-s{margin-top:14px;width:100%;justify-content:center}
+@media (max-width:640px){.wrapx{display:none}.s2-mcards{display:block}}
+.s2-lead{background:var(--white);border:1px solid var(--line);border-radius:3px;padding:clamp(18px,2.4cqw,26px);max-width:720px;margin-top:clamp(20px,2.6cqw,30px)}
+.s2-lead form{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.s2-lead input[type=email],.s2-lead textarea{flex:1 1 260px;min-height:48px;padding:10px 12px;border:1px solid var(--line2);border-radius:3px;font:inherit;background:var(--paper);color:var(--ink)}
+.s2-lead textarea{flex-basis:100%;min-height:72px;resize:vertical}
+.s2-lead .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.s2-lead .msg{margin:10px 0 0;font-size:0.875rem;color:var(--acc)}
+.s2-lead .msg.err{color:#A3402A}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -390,7 +459,7 @@ table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
     <a class="btn-p obuy" href="https://buy.stripe.com/4gMaEY5Am0ti6RT9UV43S0j" rel="noopener" data-cta="pricing_hero_checkout_99" id="pricing_hero_checkout_99">Get the pipeline &#183; $99 once</a>
     <a class="btn-s" href="#tiers" data-cta="pricing_hero_tiers" id="pricing_hero_tiers">Compare the three tiers</a>
   </div>
-  <p style="margin:10px 0 0;font-size:0.875rem;color:var(--faint);max-width:64ch">One payment, no renewal, and you keep what you paid for. The download opens at /get/ the moment Stripe clears the payment. Refund within 14 days, no questions asked. <a href="#faq" data-cta="pricing_hero_faq" id="pricing_hero_faq">Questions? Read the FAQ</a></p>
+  <p style="margin:10px 0 0;font-size:0.875rem;color:var(--faint);max-width:64ch">One payment, no renewal, and you keep what you paid for. The download opens at /get/ the moment Stripe clears the payment. Refund within 14 days, no questions asked. <a href="#faq" data-cta="pricing_hero_faq" id="pricing_hero_faq">Questions? Read the FAQ</a> &#183; <a href="#proof" data-cro="sprint-20261115-ttr-proof-link" data-cta="pricing_hero_proof" id="pricing_hero_proof">See the sites it built</a></p>
   <p class="lede" style="margin-top:20px">Most people reading this should buy the middle tier and stop there. The $279 tier adds
     my hours and no software, so if you already know the niche you want, you don't need it. And if you
     never buy anything, the method, the measured data and a worked run stay open on this site.</p>
@@ -458,6 +527,48 @@ table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
   </div>
 </section>
 
+<section class="bt sec in" id="proof" data-cro="sprint-20261115-ttr-proof" data-mr-placement="pricing_proof">
+  <p class="kicker">Proof you can check</p>
+  <h2>Open what it built before you pay $99</h2>
+  <p class="sub">There are no customer quotes and no buyer count on this page. Everything below is something you can open and check yourself, today.</p>
+  <div class="s2-proof">
+    <div class="s2-box">
+      <h3>Six live sites the pipeline built</h3>
+      <ul class="s2-sites">
+        <li><a href="https://ukmoneycalc.com/" rel="noopener" target="_blank">ukmoneycalc.com</a> &#8212; Take-home pay and salary sacrifice on 2026/27 HMRC rates. Source: gov.uk, HMRC.</li>
+        <li><a href="https://taxbreakcalc.com/" rel="noopener" target="_blank">taxbreakcalc.com</a> &#8212; The dollar value of each 2026 federal tax break at your income. Source: IRS, bill text.</li>
+        <li><a href="https://noovertimetax.com/" rel="noopener" target="_blank">noovertimetax.com</a> &#8212; Federal tax saved under the overtime deduction. Source: IRS guidance.</li>
+        <li><a href="https://examscorecalc.com/" rel="noopener" target="_blank">examscorecalc.com</a> &#8212; Raw exam points to a projected AP, SAT or ACT score. Source: College Board worksheets.</li>
+        <li><a href="https://goldgramprice.com/" rel="noopener" target="_blank">goldgramprice.com</a> &#8212; Melt value by weight and karat at live spot. Source: spot price API.</li>
+        <li><a href="https://lakelevelnow.com/" rel="noopener" target="_blank">lakelevelnow.com</a> &#8212; Live elevation and 30-day trend for 25 US lakes. Source: USGS, CDEC, USBR gages.</li>
+      </ul>
+      <p class="s2-note">Each one is live and each figure cites its source. All six were registered between 19 and 22 June 2026. The full list of 34 properties is on <a href="/ctr-by-position/">the measured data page</a>.</p>
+    </div>
+    <div class="s2-box">
+      <h3>Exactly what the $99 download contains</h3>
+      <ul class="s2-files">
+        <li><code class="k">ToolsThatRank-1.0.0.zip</code>: 93 files, 205&#8201;KB zipped, 708&#8201;KB unpacked</li>
+        <li><code class="k">orchestrator.mjs</code> + <code class="k">stages/</code>: the 15-stage pipeline, ending at a human gate that never publishes on its own</li>
+        <li><code class="k">lib/</code>: 16 shared modules. <code class="k">prompts/</code>: 8 agent prompts you can edit</li>
+        <li><code class="k">docs/</code>: 6 guides (quickstart, providers, configuration, architecture, new project, code rules)</li>
+        <li><code class="k">sites/example-cooking-converter/</code>: a worked example that runs offline with no API key</li>
+        <li><code class="k">test/selfcheck.mjs</code>: 120 automated checks. <code class="k">npm run verify</code> must print 120/120</li>
+      </ul>
+      <p class="s2-note" style="margin-top:10px">SHA-256 of the archive you will download, published before you buy:</p>
+      <code class="s2-sha">1083ce0c3f5d5d527a798144aa5ce0896dbe133854ea0dd253db15387dd573f0</code>
+    </div>
+    <div class="s2-box">
+      <h3>Dated readings, with the source</h3>
+      <ul class="s2-files">
+        <li>533 organic clicks in the 30 days to 14 August 2026 on the sites this pipeline built, from the operator's own Search Console. Breakdown by position band: <a href="/ctr-by-position/">measured data</a>.</li>
+        <li>27 page attempts, 19 published pages on 15 websites, 8 held back, 10 to 20 October 2026: <a href="/organic-search-case-study/">the case study</a>, with every URL linked.</li>
+        <li>A recorded run where one value did not prove and the page shipped without it: <a href="/#proof">the run log on the home page</a>.</li>
+      </ul>
+      <p class="s2-note">These are readings with a date, not a promise of rankings. Links, brand and time still decide competitive niches.</p>
+    </div>
+  </div>
+</section>
+
 <section class="wht bt sec in">
   <p class="kicker">Side by side</p>
   <h2>What each tier actually includes</h2>
@@ -487,11 +598,34 @@ table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
       </tbody>
     </table>
   </div>
+  <div class="s2-mcards" data-cro="sprint-20261115-ttr-mobile-cards" data-mr-placement="pricing_mobile_cards">
+    <div class="s2-mc"><h3><span>Read the method</span><span class="pr">$0</span></h3><dl><dt>The published method</dt><dd>Yes</dd><dt>The measured data pages</dt><dd>Yes</dd><dt>The pipeline source</dt><dd>No</dd><dt>Sites you may build</dt><dd>None</dd><dt>Trust and originality layers</dt><dd>Described only</dd><dt>Provider adapters</dt><dd>Described only</dd><dt>Niche vetting before you build</dt><dd>No</dd><dt>First page reviewed against the gate</dt><dd>No</dd><dt>How delivery reaches you</dt><dd>Nothing to deliver</dd><dt>Refund window</dt><dd>Nothing paid</dd></dl><a class="btn-s" href="/#how">Read the method</a></div>
+    <div class="s2-mc rec"><h3><span>The pipeline</span><span class="pr">$99 once</span></h3><dl><dt>The published method</dt><dd>Yes</dd><dt>The measured data pages</dt><dd>Yes</dd><dt>The pipeline source</dt><dd>Yes</dd><dt>Sites you may build</dt><dd>Unlimited</dd><dt>Trust and originality layers</dt><dd>14 plus 5</dd><dt>Provider adapters</dt><dd>11</dd><dt>Niche vetting before you build</dt><dd>No</dd><dt>First page reviewed against the gate</dt><dd>No</dd><dt>How delivery reaches you</dt><dd>Instant, at /get/</dd><dt>Refund window</dt><dd>14 days</dd></dl><a class="btn-p obuy" href="https://buy.stripe.com/4gMaEY5Am0ti6RT9UV43S0j" rel="noopener" data-cta="pricing_mcard_checkout_99" id="pricing_mcard_checkout_99">Get the pipeline &#183; $99</a></div>
+    <div class="s2-mc"><h3><span>Plus niche vetting</span><span class="pr">$279 once</span></h3><dl><dt>The published method</dt><dd>Yes</dd><dt>The measured data pages</dt><dd>Yes</dd><dt>The pipeline source</dt><dd>Yes</dd><dt>Sites you may build</dt><dd>Unlimited</dd><dt>Trust and originality layers</dt><dd>14 plus 5</dd><dt>Provider adapters</dt><dd>11</dd><dt>Niche vetting before you build</dt><dd>Yes</dd><dt>First page reviewed against the gate</dt><dd>Yes, within 3 business days</dd><dt>How delivery reaches you</dt><dd>By email within 1 business day</dd><dt>Refund window</dt><dd>14 days</dd></dl><a class="btn-s obuy" href="https://buy.stripe.com/8x2bJ29QCdg41xzaYZ43S0x" rel="noopener" data-cta="pricing_mcard_checkout_279" id="pricing_mcard_checkout_279">Get vetting too &#183; $279</a></div>
+  </div>
   <div class="cta-row">
     <a class="btn-p obuy" href="https://buy.stripe.com/4gMaEY5Am0ti6RT9UV43S0j" rel="noopener" data-cta="pricing_table_checkout_99" id="pricing_table_checkout_99">Get the pipeline &#183; $99</a>
     <a class="btn-s obuy" href="https://buy.stripe.com/8x2bJ29QCdg41xzaYZ43S0x" rel="noopener" data-cta="pricing_table_checkout_279" style="background:transparent;color:var(--ink);border:1px solid #8C887C" id="pricing_table_checkout_279">Get vetting too &#183; $279</a>
   </div>
   <p class="stamp">Prices read from the live Stripe account on 6 November 2026. Both are one-time charges and neither renews.</p>
+</section>
+
+<section class="bt sec in" id="ask" data-cro="sprint-20261115-ttr-lead" data-mr-placement="pricing_lead">
+  <p class="kicker">Not ready to pay?</p>
+  <h2>Ask a question before you spend $99</h2>
+  <div class="s2-lead">
+    <p style="margin:0;color:var(--body);max-width:60ch">Leave your email and, if you like, one question about the pipeline. A person reads every message and replies by email. No newsletter and no sequence. You can still buy later at the same $99, or take the free tier and never pay.</p>
+    <form id="s2-lead-form" novalidate>
+      <label for="s2-email" class="skip">Email</label>
+      <input type="email" id="s2-email" name="email" required autocomplete="email" placeholder="you@example.com">
+      <label for="s2-q" class="skip">Your question</label>
+      <textarea id="s2-q" name="q" maxlength="600" placeholder="Your question (optional). For example: will it run on my niche?"></textarea>
+      <div class="hp" aria-hidden="true"><label for="s2-hp">Leave empty</label><input type="text" id="s2-hp" name="hp" tabindex="-1" autocomplete="off"></div>
+      <button type="submit" class="btn-p" data-cta="pricing_lead_submit" id="pricing_lead_submit">Send my question</button>
+    </form>
+    <p class="msg" id="s2-lead-msg" role="status" aria-live="polite"></p>
+    <p class="s2-note" style="margin-top:8px">Your email is used only to answer you. Details in the <a href="/privacy/">privacy notice</a>. Or write to <a href="mailto:support@toolsthatrank.com">support@toolsthatrank.com</a>.</p>
+  </div>
 </section>
 
 <section class="bt sec in">
@@ -529,11 +663,31 @@ table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
       </details>
       <details>
         <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">Do I need the vetting tier?</h3></summary>
-        <p>No, and most buyers do not. Take the $99 tier if you already have a niche in mind or you are happy to pick one and find out. The vetting tier earns its price in one case, when you are about to sink real hours into a topic and want somebody who has run this 34 times to tell you first whether the topic is worth the hours. You can also come back for it later. The $279 link stays open to people who already bought at $99, and I credit the $99 you already paid.</p>
+        <p>No, and most people do not. Take the $99 tier if you already have a niche in mind or you are happy to pick one and find out. The vetting tier earns its price in one case, when you are about to sink real hours into a topic and want somebody who has run this 34 times to tell you first whether the topic is worth the hours. You can also come back for it later. The $279 link stays open to people who already bought at $99, and I credit the $99 you already paid.</p>
       </details>
       <details>
         <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">Is there a refund?</h3></summary>
         <p>Fourteen days, no questions, no conditions, on both paid tiers. The window runs from the day you pay. On the vetting tier it runs from the day you pay too, not from the day the review lands, so if the review is slow the window is still yours. Refunds go back to the card Stripe charged.</p>
+      </details>
+      <details data-cro="sprint-20261115-ttr-faq">
+        <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">Can I see something it built before I pay?</h3></summary>
+        <p>Yes. Six live sites are linked in <a href="#proof">the proof block</a> above, among them ukmoneycalc.com and lakelevelnow.com. The case study links 19 more published pages. Open them and check any figure against the source it cites.</p>
+      </details>
+      <details data-cro="sprint-20261115-ttr-faq">
+        <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">Do I need to write code?</h3></summary>
+        <p>You need to be comfortable in a terminal. You run commands with Node 18.17 or newer, edit a config file and deploy static files to your own hosting. You do not need to write the pipeline code yourself. The bundled offline example runs with no API key, so you can see a full run before you spend anything on a model.</p>
+      </details>
+      <details data-cro="sprint-20261115-ttr-faq">
+        <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">What does it cost to run after the $99?</h3></summary>
+        <p>Model usage, domains and hosting are yours and are billed by those providers, not by me. The offline stub costs nothing. The cheaper HTTP providers cost a fraction of a dollar per build. There is no subscription from ToolsThatRank.</p>
+      </details>
+      <details data-cro="sprint-20261115-ttr-faq">
+        <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">Who do I pay, and what shows on my statement?</h3></summary>
+        <p>You pay on a Stripe checkout page, in US dollars, one time. The statement line reads AUTOM8 LLC, the trading name of the seller. The $99 download opens at /get/ as soon as Stripe confirms the payment.</p>
+      </details>
+      <details data-cro="sprint-20261115-ttr-faq">
+        <summary><h3 style="display:inline;font-size:0.9688rem;font-weight:500">I am not ready to buy. Can I ask first?</h3></summary>
+        <p>Yes. Use <a href="#ask">the question form</a> on this page or write to support@toolsthatrank.com. A person replies by email. Nothing is sold to you from that address.</p>
       </details>
   </div>
 </section>
@@ -623,6 +777,31 @@ table.data tr:last-child td,table.data tr:last-child th{border-bottom:0}
       hit("cta");
     }
   },true);
+})();
+</script>
+<script data-cro="sprint-20261115-ttr-lead-js">
+(function(){
+  var f=document.getElementById('s2-lead-form'); if(!f) return;
+  var msg=document.getElementById('s2-lead-msg'), btn=document.getElementById('pricing_lead_submit');
+  var FL='https://fleet-leads.lipmichal.workers.dev/lead', TTR='https://ttr-purchase-verify.lipmichal.workers.dev/lead';
+  function post(u,b){return fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b),credentials:'omit'}).then(function(r){return r.json().then(function(j){if(!r.ok||!j.ok)throw new Error(j.error||r.status);return j;});});}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=(f.email.value||'').trim();
+    if(!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(email)){msg.className='msg err';msg.textContent='Please enter a valid email address.';return;}
+    var b={email:email,offer_id:'ttr-pipeline-questions',page:location.pathname,price:'$99',hp:f.hp.value||''};
+    var b2={email:email,offer_id:'ttr-pipeline-questions',page:location.pathname,price:'$99',q:(f.q.value||'').slice(0,600),hp:f.hp.value||''};
+    btn.disabled=true; msg.className='msg'; msg.textContent='Sending\u2026';
+    var a=post(FL,b).then(function(){return 1;},function(){return 0;});
+    var c=post(TTR,b2).then(function(){return 1;},function(){return 0;});
+    Promise.all([a,c]).then(function(r){
+      if(r[0]||r[1]){
+        msg.className='msg'; msg.textContent='You are on the list. A person will reply to '+email+' by email.'; f.reset();
+        try{window.mrTrack('generate_lead',{site:'toolsthatrank.com',product:'ttr_pipeline',offer_id:'ttr-pipeline-questions',price:99,value:99,currency:'USD',items:[{item_id:'ttr_pipeline',item_name:'ToolsThatRank full pipeline',price:99,quantity:1}]});}catch(x){}
+      } else { msg.className='msg err'; msg.textContent='That did not send. Please write to support@toolsthatrank.com instead.'; }
+      btn.disabled=false;
+    });
+  });
 })();
 </script>
 <script src="/assets/js/ttr-ui.js" defer></script>

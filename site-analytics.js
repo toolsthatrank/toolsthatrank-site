@@ -15,6 +15,8 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
   var w = window, d = document, n = navigator, ID = MR_GA_ID, BASIC = MR_CONSENT_MODE !== 'advanced';
   w.mrTrack = function () {};
   if (!/^G-[A-Z0-9]{4,}$/.test(ID) || /^G-X+$/.test(ID) || w.__mrAnalytics) return;
+  /* sprint-20261115-ga-host: GA runs only on the production hostname (no localhost, 127.0.0.1, *.pages.dev, *.workers.dev). */
+  if (!/^(www\.)?toolsthatrank\.com$/.test(location.hostname)) return;
   w.__mrAnalytics = 1;
 
   var KEY = 'mr_consent_v1', TTL = 34164000; // seconds, 13 months: cookie_expires and the re-ask window
@@ -113,27 +115,30 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     if (!get(rk)) track('checkout_return', { has_session: true }, function () { put(rk, '1'); });
   }
 
-  /* purchase on /get/. Both payment links redirect to /get/#s=<checkout session id>. One purchase per session id per
-     browser (localStorage), and GA also dedupes on transaction_id. ttr_pipeline counts only when the delivery gate opens,
-     which needs the licence Worker to confirm with Stripe that the session is paid and then sign a token. ttr_vetting
-     has no automatic gate, so its link redirects with &tier=ttr_vetting and a well-formed live session id is enough.
-     cs_test_ ids never send. page_location still drops the fragment; the id reaches Google only as transaction_id. */
-  function purchase(id, t) {
-    if (!t || !/^cs_live_[A-Za-z0-9]+$/.test(id) || get('ttr_purchase_' + id)) return;
-    track('purchase', { transaction_id: id, currency: 'USD', value: t.price, items: ttrItem(t), tier: t.item_id },
-      function () { put('ttr_purchase_' + id, '1'); });
+  /* sprint-20261115-purchase: purchase on /get/. Both payment links redirect to /get/#s=<checkout session id>
+     (the vetting link adds &tier=ttr_vetting). The page asks the ttr-purchase-verify Worker, which reads the session from
+     Stripe with its own restricted key (Checkout Sessions read), and fires GA4 purchase only when Stripe says
+     status=complete and payment_status=paid. Tier and value come from Stripe, not from the URL. One purchase per session
+     id per browser (localStorage), and GA also dedupes on transaction_id. cs_test_ ids never send. page_location still
+     drops the fragment; the id reaches Google only as transaction_id. */
+  var VERIFY = 'https://ttr-purchase-verify.lipmichal.workers.dev/verify?session_id=';
+  function purchase(id, tries) {
+    if (!/^cs_live_[A-Za-z0-9]+$/.test(id) || get('ttr_purchase_' + id) || !w.fetch) return;
+    fetch(VERIFY + encodeURIComponent(id), { credentials: 'omit' }).then(function (r) { return r.json(); }).then(function (v) {
+      if (!v || v.ok !== true) throw 0;
+      if (v.paid !== true) { if (tries < 3) setTimeout(function () { purchase(id, tries + 1); }, 4000); return; }
+      if (get('ttr_purchase_' + id)) return;
+      var t = ttrTier(v.tier) || { item_id: v.tier, item_name: v.item_name, price: v.value };
+      var items = [{ item_id: t.item_id, item_name: t.item_name, price: v.value, quantity: 1 }];
+      put('ttr_purchase_' + id, '1');
+      track('purchase', { transaction_id: id, currency: v.currency || 'USD', value: v.value, items: items, tier: t.item_id,
+        site: 'toolsthatrank.com', product: t.item_id, price: v.value, verified: 'server' });
+    }).catch(function () { if (tries < 3) setTimeout(function () { purchase(id, tries + 1); }, 4000); });
   }
   if (/^\/get(\/|\/index\.html)?$/.test(location.pathname)) {
     var fr = location.hash.replace(/^#/, ''), fsid = (/(?:^|&)s=([^&]+)/.exec(fr) || [])[1];
-    var ftier = (/(?:^|&)tier=([^&]+)/.exec(fr) || [])[1];
     try { fsid = fsid ? decodeURIComponent(fsid) : ''; } catch (e) { fsid = ''; }
-    if (/^cs_(live|test)_[A-Za-z0-9]+$/.test(fsid)) {
-      if (ftier === 'ttr_vetting') purchase(fsid, ttrTier('ttr_vetting'));
-      else w.addEventListener('ttr:gate', function (e) {
-        var g = e && e.detail;
-        if (g && g.open === true && g.session === fsid) purchase(fsid, ttrTier('ttr_pipeline'));
-      });
-    }
+    if (/^cs_live_[A-Za-z0-9]+$/.test(fsid)) purchase(fsid, 0);
   }
 
   /* ---------- consent banner ---------- */
@@ -356,7 +361,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
     if (STRIPE.test(href) || a.hasAttribute('data-mr-checkout')) {
       var slug = (/^https:\/\/buy\.stripe\.com\/([A-Za-z0-9]+)/i.exec(href) || [])[1], tt = slug && TTR[slug];
       if (tt) {
-        track('begin_checkout', { currency: 'USD', value: tt.price, items: ttrItem(tt), tier: tt.item_id, placement: placement(a), cta_id: clip(a.getAttribute('data-cta') || '') });
+        track('begin_checkout', { site: 'toolsthatrank.com', product: tt.item_id, price: tt.price, currency: 'USD', value: tt.price, items: ttrItem(tt), tier: tt.item_id, placement: placement(a), cta_id: clip(a.getAttribute('data-cta') || '') });
         return;
       }
       var plan = planOf(a, href), cp = { plan: plan, currency: 'USD', placement: placement(a) };
