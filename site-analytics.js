@@ -27,7 +27,8 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
      read from /v1/payment_links/<id>/line_items on 2026-09-29. Update the price here if Stripe's changes. */
   var TTR = {
     '4gMaEY5Am0ti6RT9UV43S0j': { item_id: 'ttr_pipeline', item_name: 'ToolsThatRank full pipeline', price: 99 },
-    '8x2bJ29QCdg41xzaYZ43S0x': { item_id: 'ttr_vetting', item_name: 'ToolsThatRank pipeline plus niche vetting', price: 279 }
+    '8x2bJ29QCdg41xzaYZ43S0x': { item_id: 'ttr_vetting', item_name: 'ToolsThatRank pipeline plus niche vetting', price: 279 },
+    '8x200k1k6dg4901aYZ43S3V': { item_id: 'ttr_vetting', item_name: 'ToolsThatRank pipeline plus niche vetting', price: 279 }
   };
   function ttrTier(id) { for (var k in TTR) if (TTR[k].item_id === id) return TTR[k]; return null; }
   function ttrItem(t) { return [{ item_id: t.item_id, item_name: t.item_name, price: t.price, quantity: 1 }]; }
@@ -436,7 +437,7 @@ var MR_CONSENT_MODE = 'basic'; // 'basic' | 'advanced'
   if (navigator.globalPrivacyControl || navigator.doNotTrack === '1' ||
       new URLSearchParams(location.search).get('roi_qa') === '1' ||
       typeof window.mrTrack !== 'function' || !('IntersectionObserver' in window)) return;
-  var products = {'4gMaEY5Am0ti6RT9UV43S0j':'tools_that_rank_pipeline','8x2bJ29QCdg41xzaYZ43S0x':'tools_that_rank_vetting'};
+  var products = {'4gMaEY5Am0ti6RT9UV43S0j':'tools_that_rank_pipeline','8x2bJ29QCdg41xzaYZ43S0x':'tools_that_rank_vetting','8x200k1k6dg4901aYZ43S3V':'tools_that_rank_vetting'};
   var seen = Object.create(null);
   document.querySelectorAll('a[href^="https://buy.stripe.com/"]').forEach(function (a) {
     var href = a.href || '', product = '';
